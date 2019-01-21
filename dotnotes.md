@@ -1,4 +1,4 @@
-# Rice notes. 
+# Rice notes
 ### Todo List
 - [ ] Download [compton](https://github.com/chjj/compton)  | [Compton Arch](https://wiki.archlinux.org/index.php/compton)
 - [ ] Installing [Wal](https://github.com/dylanaraps/wal) (python-wall as it seems to be called. May just use old version??)

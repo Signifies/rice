@@ -13,6 +13,10 @@
 - [Beautiful rice by quant0x2](https://github.com/quant0x2/rice-) May want to use his polybar config.
 ### Bspwmrc files
 - [Isaac's BSPWMRC](https://github.com/isaacwhanson/dotfiles/blob/develop/bspwm/.config/bspwm/bspwmrc)
+- [Tutorial's config files](https://pastebin.com/Qg2UF1dt)
+- [Tutorial's Keybinds](https://pastebin.com/QCfX829C)
 ### Polybar configs
 - [Isaac's Polybar setup](https://github.com/isaacwhanson/dotfiles/blob/develop/bspwm/.config/polybar/config)
 - [Tutorials Polybar](https://www.reddit.com/r/unixporn/comments/74z2z6/easily_getting_started_with_bspwm_and_polybar/)
+- [Tutorial's Polybar Config pastebin](https://pastebin.com/2AgTkhVx)
+

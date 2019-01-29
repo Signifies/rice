@@ -1,0 +1,500 @@
+/*
+ * Main CSS code
+ */
+
+body {
+    background-image:url(images/background.png);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    margin: 0px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+h4, h5, h6 {
+    margin: 0px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+h1 {
+    font-size: 70px;
+    line-height: 80px;
+}
+h2 {
+    font-size: 30px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 15px;
+    margin: 0px;
+}
+
+p {
+    font-size: 12px;
+    margin: 0px;
+}
+
+input { 
+    padding: 5px;
+    border: solid 1px #E5E5E5;
+    outline: 0;
+    font: normal 12px/100% Verdana, Tahoma, sans-serif;
+    width: 50px;
+    background: #FFFFFF;
+}
+
+input, textarea {
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 10px;
+}
+
+#timerstatus {
+    height: 60px;
+    width: 130px;
+    z-index: 1;
+    position:absolute;
+    left:50%;
+    top:200px;
+    padding: 10px;
+    margin:0 0 0 -75px;
+    text-align: center;
+    display: none;
+}
+
+#toprow {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.status {
+    display: inline;
+    float: right;
+    text-align: left;
+    color: #0033FF;
+    font-size: 18px;
+}
+
+.passwordoptions {
+    display: inline-block;
+    width: 345px;
+    height: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.likediv {
+    width: 135px;
+    float: right;
+}
+
+.ratediv {
+    height: 22px;
+    width: 120px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    float: right;
+}
+
+#version {
+    margin-bottom: 5px;
+}
+
+.passwordsetbox {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#passbox {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#password1 {
+    width: 150px;
+}
+#password2 {
+    width: 150px;
+}
+#passask {
+    width: 150px;
+}
+
+#wrongpassworderror {
+    color: #FF0000;
+}
+
+#lockedout {
+    height: 175px;
+    width: 400px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#gotblocked {
+    height: 150px;
+    width: 600px;
+    text-align: center;
+}
+
+#warning {
+    color: #D92525;
+}
+
+#power {
+    height: 100px;
+    width: 335px;
+    padding: 5px;
+    background-color:rgba(29,224,52,0.2);
+    text-align: left;
+}
+#sleep {
+    height: 100px;
+    width: 335px;
+    padding: 5px;
+    background-color:rgba(29,182,224,0.2);
+    text-align: right;
+}
+
+#step1 {
+    height: 90px;
+}
+#step2 {
+    height: 100px;
+}
+#step3 {
+    height: 290px;
+}
+
+#lockdown {
+    background-color:rgba(255,136,0,0.3);
+    margin-bottom: 0px;
+}
+
+.optionrow {
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom:10px;
+    background-color:rgba(213,222,221,0.5);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.optionleft {
+    width: 335px;
+    float: left;
+    padding-right: 10px;
+}
+
+.optionright {
+    width: 345px;
+    overflow:hidden;
+    font-size: 12px;
+}
+
+.header {
+    height: 130px;
+    overflow: hidden;
+}
+
+.subheader1 {
+    width: 150px;
+    float:left;
+}
+
+.subheader2 {
+    width: 300px;
+    float: left;
+    overflow:hidden;
+}
+
+#blocklistHeader {
+    width: 700px;
+}
+
+.subheader3 {
+    width: 250px;
+    height: 125px;
+    overflow:hidden;
+    text-align: right;
+}
+
+.footersmalltext {
+    color: white;
+    text-align: center;
+}
+
+.footersmalltext a:link,
+.footersmalltext a:visited,
+.footersmalltext a:hover,
+.footersmalltext a:active {
+    color: white;
+}
+
+.box {
+    background-color: #F5F5F5;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 10px #000;
+}
+
+#optionsbox {
+    width: 700px;
+    margin-bottom:5px;
+}
+
+
+/*
+ * On off switch code
+ */
+.onoffswitch {
+    position: relative; width: 90px;
+    display: inline-block;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #1D851D; color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #E0E0E0; color: #4A4A4A;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    width: 30px; margin: 0px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+/*
+ * timer set button
+ */
+.timerset {
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+    background-color:#ededed;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#777777;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 15px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+    /* makes the cursor change to a hand */
+    cursor: hand; 
+    cursor: pointer;
+}.timerset:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background-color:#dfdfdf;
+}.timerset:active {
+    position:relative;
+    top:1px;
+}
+
+/*
+ * cancel button
+ */
+.cancel {
+    -moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+    box-shadow:inset 0px 1px 0px 0px #f29c93;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100) );
+    background:-moz-linear-gradient( center top, #fe1a00 5%, #ce0100 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+    background-color:#fe1a00;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #d83526;
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:1px 5px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #b23e35;
+    /* makes the cursor change to a hand */
+    cursor: hand; 
+    cursor: pointer;
+}.cancel:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00) );
+    background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+    background-color:#ce0100;
+}.cancel:active {
+    position:relative;
+    top:1px;
+}
+
+/*
+ * save blocklist button
+ */
+.saveblocklist {
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+    background-color:#ededed;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #000000;
+    display:inline-block;
+    color:#000000;
+    font-family:arial;
+    font-size:17px;
+    font-weight:bold;
+    padding:6px 0px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+    /* makes the cursor change to a hand */
+    cursor: hand; 
+    cursor: pointer;
+    /* fix width issues */
+    width: 150px;
+    text-align: center;
+}.saveblocklist:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background-color:#dfdfdf;
+}.saveblocklist:active {
+    position:relative;
+    top:1px;
+}
+
+/*
+ * random password button
+ */
+#randpassbox {
+    /* fix formatting issues */
+    position: relative;
+    top: -11px;
+    left: 20px;
+}
+
+.randompassword {
+    -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+    background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+    background-color:#3d94f6;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:8px 2px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #1570cd;
+    /* makes the cursor change to a hand */
+    cursor: hand; 
+    cursor: pointer;
+}.randompassword:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6) );
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background-color:#1e62d0;
+}.randompassword:active {
+    position:relative;
+    top:1px;
+}
+
+.ratebutton {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+    background-color:#ededed;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#121212;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:0px 2px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+    margin: 0px;
+    /* makes the cursor change to a hand */
+    cursor: hand; 
+    cursor: pointer;
+}.ratebutton:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+    background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background-color:#dfdfdf;
+}.ratebutton:active {
+    position:relative;
+    top:1px;
+}
+
+/*
+ * Save password code
+ */
+#savepassword {
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 5px 1px;
+    width: 150px;
+}
+

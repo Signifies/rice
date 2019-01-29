@@ -1,0 +1,1 @@
+Okta.WindowUtil=function(e){function t(){return"eval"}function n(){return"Function"}function u(){return"createElement"}var r={};if(e){r.setTimeout=function(t,n){return e.setTimeout(t,n)};r.setInterval=function(t,n){return e.setInterval(t,n)};if(e.document){r.createDocElement=e.document[u()]}r.evaluate=e[t()];r.Function=e[n()]}return r}(Okta.window);

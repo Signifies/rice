@@ -1,0 +1,1 @@
+(function(){var n=chrome.runtime.connect(),e=Okta.PopoverExport,o=e.Events,t=e.underscore.extend,r=t({},o);r.post=function(e){n.postMessage(e)};n.onMessage.addListener(function(e){r.trigger("message",e)});e.popover(r)})();

@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html>
+    <!-- Copyright 2016 by Forty Foot Designs, LLC.  All rights reserved. -->
+    <head>
+        <title>LiteSabre</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no">
+
+        <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+
+        <script type="text/javascript" src="js/universal.js"></script><!-- end universal replace-->
+        <script type="text/javascript" src="js/jquery-ui.min_limited_functionality.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.js"></script><!-- do not use min version -->
+        <script type="text/javascript" src="js/dateBox.js"></script>
+
+
+        <!-- calendar -->
+        <link property='' rel='stylesheet' href='css/fullcalendar.css' />
+
+
+        <script src='js/moment.min.js'></script>
+
+        <script src='js/momentTimezone-2010-2020.js'></script>
+        <script src='js/fullcalendar.js'></script>
+        <!-- end calendar -->
+
+        <!-- css -->
+
+        <!--   <link type="text/css" media="screen" href="css/ui.jqgrid.css" rel="stylesheet" />  -->
+        <link property='' rel="stylesheet" href="css/jquery.mobile.structure1.4.css" />
+        <link property='' rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link property='' rel="stylesheet" href="css/clean.css" />
+
+
+        <link property='' rel="stylesheet" href="css/custom-theme1/jquery-ui-1.8.24.custom.css" />
+        <link rel="stylesheet" type="text/css" href="css/jqm-datebox.min.css" property=""/>
+
+        <link property='' rel="stylesheet" href="css/tracker.css" />
+
+        <script type="text/javascript" src="js/touch-punch.js"></script>
+        <!--  <script type="text/javascript" src="js/grid.locale-en.js"></script>
+          <script type="text/javascript" src="js/jquery.jqGrid.src.js"></script> -->
+        <script type="text/javascript" src="js/date.js"></script>
+
+
+
+
+        <script src="js/grid.locale-en.js" type="text/javascript"></script>
+        <script src="js/jquery.jqGrid.src.js" type="text/javascript"></script>
+        <link property='' rel="stylesheet" href="css/ui.jqgrid.css" />
+        <link property='' rel="stylesheet" href="css/defaultStyles.css" />
+
+
+        <script src="js/alertify.min.js"></script>
+        <!-- include the core styles -->
+        <link property='' rel="stylesheet" href="alertify/themes/alertify.core.css" />
+        <!-- include a theme, can be included into the core instead of 2 separate files -->
+        <link property='' rel="stylesheet" href="alertify/themes/alertify.default.css" />
+        <style>
+            .button {
+                margin-top: 8px;
+                background-color: #fffbe7;
+                height: 47px;
+                width: 58px;
+                font-weight: bold;
+                font-size: 1.0em;
+            }
+            .keyPadMain{
+                position: fixed;
+                background-color: #c4e0ea;
+                top: 50px;
+                left: 345px;
+                text-align: center;
+                padding: 20px;
+                z-index: 999999;
+                border-style: solid;
+                border-width: 1px;
+                -webkit-box-shadow: 7px 6px 7px -1px rgba(59,59,64,1);
+                -moz-box-shadow: 7px 6px 7px -1px rgba(59,59,64,1);
+                box-shadow: 7px 6px 7px -1px rgba(59,59,64,1);
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div data-role="page" align='center' data-theme="a" id="mainPage">
+            <div id='mainContent' class='background'>
+                <div id="header" data-role="header" data-theme="a" class='header'>
+
+                    <a id="logoutButtonId" data-role="button"  data-mini="true"
+                       data-theme="a"  data-ajax="false">Logout</a>
+                    <a id="resetDecsButtonId" class='resetDecsButton' data-role="button"  data-mini="true"
+                       data-theme="a"  data-ajax="false">Reset DECS</a>
+                    <span class='warning' id='warningId'></span>
+                    <h1 class='titleForApp'>LiteSabre Nimble Trader</h1>
+                    <span id='autoTradeInProgressId'><span class='aTprog'>AT in Progress</span> 3456-23OCT FOR 2345-25SEP-CA</span>       <span id='lastUpdateTextId'></span>
+                    <span id='updateHiseqId'><a href="#" >SYNC WITH DECS</a></span></div>
+
+                <span id='versionId' class='versionText' >Version ????</span> <span class='settingsPageShowButton' id="settingsPageShowButtonId">Settings</span>
+                <span id='errorTapToFixId' class='errorTapToFix'>TAP TO FIX</span>
+                <span class="wait22" id='wait22Id'><img alt='' src="images/wait22.gif"/> <span class=' requestAbort settingsPageShowButton' id="requestAbortId">Abort</span></span>
+
+                <span class='decsWindowShow' id='decsWindowShowId'>DECS WINDOW</span>
+                <span class='fourPartDisplay' id='fourPartDisplayId'></span>
+                <span class='paySummary'><span class="hiInfo" id='hiInfoId'><span id='hiSwitcherId' class='hiSwitcher'>HI1</span>PROJ:<span id="projId" class="hiText proj">----</span>GTD:<span id="gtdId" class="hiText gtd">----</span>PPROJ:<span id="pprojId" class="hiText pproj">----</span>IPMAX:<span id="ipmaxId" class="hiText ipmax">----</span></span></span>
+
+
+                <div id="seqPopupId" class="seqPopup shadow">
+                    <div id="seqPopupHeaderId" class="seqPopupHeader1">
+
+                        <span id='seqPopupHeaderContentId'></span>
+                        <input type="text" id="seqPopupInputWindowId" class='seqPopupInputWindow' placeholder='MANUAL COMMANDS HERE' value=''/>
+                        <img alt='' src='images/delete-95.png' class='deleteImage' id='deleteSeqPopupWindowId'/>
+                        <div id='seqPopupBackButtonId' class='seqPopupDirectionButton seqPopupDirectionLeft' ><</div>
+                        <div id='seqPopupForwardButtonId' class='seqPopupDirectionButton seqPopupDirectionRight' >></div>
+                        <img alt='' id='seqCancelButtonId' class='closeButton' src='images/fileclose.png' style='float: right'/>
+                    </div>
+
+                    <div class="seqPopupContent">
+                        <div id="seqPopupDecsDataId"></div>
+                    </div>
+                </div>
+
+
+                <div id="inPlayPopupId" class="seqPopupLeft shadow">
+                    <div id="inPlayPopupHeaderId" class="seqPopupHeader  "><span id='inPlayPopupHeaderContentId'></span>
+                        <img alt='' id='inPlayCancelButtonId' class='closeButton' src='images/fileclose.png' style='float: right'/>
+                    </div>
+                    <div class="seqPopupContent">
+                        <div id="inPlayPopupDecsDataId"></div>
+                    </div>
+                </div>
+                <div id="submitTradeDropDeadOptionsId" data-role='content' class='dropDeadPopup round shadow'>
+                    Set a lastest Date/time that you will accept a trade/drop.<br />
+                    <input placeholder='DropDead Date' id='dropDeadDateId'  type="text" data-role="datebox"
+                           data-options='{"mode":"calbox","useFocus":true, "dateFormat": "MM/dd/YYYY"}'/>
+                    <input placeholder='DropDead Time' id='dropDeadTimeId' type="text" data-role="datebox"
+                           data-options='{"mode":"timebox","useFocus":true}'/><br />
+                    <span id="tradeIdForDropDead" style="display: none"></span>
+                    <span id="requestIdForDropDead" style="display: none"></span>
+                    <span id="goNowForDropDead" style="display: none"></span>
+                    <span id="destinationForDropDead" style="display: none"></span>
+                    <a href="#" id="dropDeadOkButtonId" class="create">OK</a>  <a href="#" id="dropDeadCancelButtonId" class="create">Cancel</a>
+
+                </div>
+
+
+                <div id='testingContentId' class='mainWindow ui-page-theme-a' >
+
+
+
+
+
+                    <!-- testing only -->
+
+
+                    <input type='text' data-theme='a' id='rawSabreCommandId'/>
+
+
+                    <a id="getRawSabreOutputButtonId" data-role="button" data-icon='gear' data-mini="true"
+                       data-theme="a" data-ajax="false">Input</a>
+                    <a id="testTradeButtonId" data-role="button" data-icon='gear' data-mini="true"
+                       data-theme="a" data-ajax="false">Test Trade</a>
+                    <a id="testImportScheduleId" data-role="button" data-icon='gear' data-mini="true"
+                       data-theme="a" data-ajax="false">Test Import Schedule</a>
+
+
+                    <div id='content5' class='rawSabre'></div>
+
+
+                </div>
+                <!-- myTrips content-->
+                <div id='myTripsContentId'  class='mainWindow ui-page-theme-a' >
+                    <div id="seqButtonsGroupId" data-role="content" class="contentMidSequence round myTripsMain">
+
+                        <div class="headButtons">
+                            <span id='tripsHeadId' class='tripsHead'><a class='hiLeft' href='#' id="getHi1Id">HI1</a>My Trips<a class='hiRight' href='#' id="getHi2Id">HI2</a></span>
+                        </div>
+
+                        <div class='trips'>
+                            <!--start myTrip generation --> <!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_0">
+                                <a href="#" id='seqButton_0' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_0" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_0" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_0" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_0" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_0" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_0'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_1">
+                                <a href="#" id='seqButton_1' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_1" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_1" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_1" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_1" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_1" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_1'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_2">
+                                <a href="#" id='seqButton_2' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_2" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_2" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_2" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_2" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_2" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_2'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_3">
+                                <a href="#" id='seqButton_3' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_3" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_3" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_3" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_3" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_3" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_3'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_4">
+                                <a href="#" id='seqButton_4' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_4" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_4" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_4" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_4" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_4" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_4'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_5">
+                                <a href="#" id='seqButton_5' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_5" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_5" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_5" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_5" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_5" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_5'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_6">
+                                <a href="#" id='seqButton_6' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_6" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_6" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_6" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_6" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_6" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_6'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_7">
+                                <a href="#" id='seqButton_7' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_7" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_7" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_7" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_7" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_7" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_7'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_8">
+                                <a href="#" id='seqButton_8' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_8" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_8" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_8" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_8" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_8" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_8'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_9">
+                                <a href="#" id='seqButton_9' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_9" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_9" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_9" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_9" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_9" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_9'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_10">
+                                <a href="#" id='seqButton_10' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_10" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_10" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_10" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_10" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_10" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_10'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_11">
+                                <a href="#" id='seqButton_11' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_11" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_11" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_11" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_11" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_11" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_11'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_12">
+                                <a href="#" id='seqButton_12' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_12" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_12" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_12" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_12" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_12" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_12'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_13">
+                                <a href="#" id='seqButton_13' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_13" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_13" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_13" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_13" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_13" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_13'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_14">
+                                <a href="#" id='seqButton_14' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_14" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_14" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_14" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_14" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_14" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_14'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_15">
+                                <a href="#" id='seqButton_15' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_15" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_15" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_15" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_15" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_15" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_15'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_16">
+                                <a href="#" id='seqButton_16' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_16" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_16" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_16" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_16" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_16" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_16'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_17">
+                                <a href="#" id='seqButton_17' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_17" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_17" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_17" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_17" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_17" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_17'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_18">
+                                <a href="#" id='seqButton_18' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_18" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_18" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_18" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_18" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_18" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_18'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_19">
+                                <a href="#" id='seqButton_19' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_19" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_19" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_19" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_19" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_19" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_19'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_20">
+                                <a href="#" id='seqButton_20' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_20" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_20" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_20" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_20" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_20" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_20'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_21">
+                                <a href="#" id='seqButton_21' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_21" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_21" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_21" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_21" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_21" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_21'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_22">
+                                <a href="#" id='seqButton_22' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_22" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_22" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_22" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_22" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_22" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_22'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_23">
+                                <a href="#" id='seqButton_23' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_23" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_23" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_23" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_23" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_23" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_23'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_24">
+                                <a href="#" id='seqButton_24' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_24" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_24" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_24" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_24" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_24" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_24'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_25">
+                                <a href="#" id='seqButton_25' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_25" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_25" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_25" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_25" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_25" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_25'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_26">
+                                <a href="#" id='seqButton_26' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_26" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_26" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_26" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_26" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_26" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_26'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_27">
+                                <a href="#" id='seqButton_27' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_27" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_27" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_27" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_27" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_27" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_27'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_28">
+                                <a href="#" id='seqButton_28' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_28" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_28" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_28" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_28" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_28" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_28'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_29">
+                                <a href="#" id='seqButton_29' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_29" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_29" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_29" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_29" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_29" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_29'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_30">
+                                <a href="#" id='seqButton_30' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_30" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_30" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_30" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_30" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_30" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_30'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_31">
+                                <a href="#" id='seqButton_31' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_31" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_31" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_31" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_31" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_31" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_31'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_32">
+                                <a href="#" id='seqButton_32' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_32" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_32" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_32" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_32" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_32" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_32'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_33">
+                                <a href="#" id='seqButton_33' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_33" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_33" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_33" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_33" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_33" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_33'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_34">
+                                <a href="#" id='seqButton_34' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_34" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_34" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_34" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_34" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_34" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_34'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_35">
+                                <a href="#" id='seqButton_35' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_35" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_35" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_35" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_35" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_35" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_35'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_36">
+                                <a href="#" id='seqButton_36' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_36" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_36" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_36" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_36" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_36" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_36'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_37">
+                                <a href="#" id='seqButton_37' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_37" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_37" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_37" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_37" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_37" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_37'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_38">
+                                <a href="#" id='seqButton_38' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_38" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_38" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_38" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_38" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_38" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_38'>NOW.</span></span></div>
+
+
+                            </div><!--my trip seq -->
+                            <fieldset  data-role="controlgroup"  data-type="horizontal" data-mini="true" id="seq_39">
+                                <a href="#" id='seqButton_39' class='seqButtons spread myTripButtonColor' data-mini="true"  data-role="button"></a>
+                            </fieldset>
+                            <div id="offerDetails_39" data-theme="a" data-role="content" class="adderData round">
+
+                                <div class="singles"><img alt='' src="images/adSingle.png"/><span id="adVerbiageId_39" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/atSingle.png"/><span id="atVerbiageId_39" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/pstSingle.png"/><span id="pstVerbiageId_39" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><img alt='' src="images/rrSingle.png"/><span id="rrVerbiageId_39" class="tripVerbiage">test here.</span></div>
+                                <div class="singles"><span class="tripVerbiage">Display tradeable trips <span class="tradeablesVerbiage postNow" id='tradeablesVerbiageId_39'>NOW.</span></span></div>
+
+
+                            </div> <!-- end myTrip generation -->
+                            <br /><br />
+                        </div>
+                    </div>
+
+                    <div id='miniCalendarWindowId' class='miniCalendarWindow'>
+                        <!--    <div id="monthSpecificCommandsId" class="monthSpecificCommands">
+                                Click any date in the calendar below to view 'legal open time' and HI33 options.
+                            </div> -->
+                        <div id='miniCalendar'></div>
+                    </div>
+
+                    <div id='calendarOnlyDecsDisplayWindowId' class='calendarOnlyDecsDisplayWindow round'>
+                        <br /><br />Click Any 'My Trips' panel above to view sequence.
+                    </div>
+
+
+                    <div id="mainCalendarId" class="mainCalendar">
+                        <div data-role="tabs" id="tabs">
+                            <div data-role="navbar">
+                                <ul>
+                                    <li><a id='calendarTabId' class='ui-btn-active' href="#one" data-ajax="false">Calendar</a></li>
+                                    <li><a id='openTimeTabId' href="#two" data-ajax="false">Trade</a></li>
+                                    <li><a id='generalTabId' href="#three" data-ajax="false">General</a></li>
+                                    <li><a id='autoTradeTabId' href="#four" data-ajax="false">Auto Trade</a></li>
+                                    <li><a id='autoDropTabId' href="#five" data-ajax="false">P to P / AutoDrop</a></li>
+
+                                </ul>
+                            </div>
+
+
+                            <div id='one'>
+                                <div id='calendar'></div>
+                                <div id='dfpEditPanelId' class='dfpEditPanel'>
+                                    <div id='dfpTrashDropAreaId' style='display: inline-block; float: left'>
+                                        <img alt='' id='dfpTrashCanId' class='dfpTrashCan' src='images/trashCanClosedSmall.png' width="26" height="26"/>
+                                        <div class='dfpTrash'> <- Drag DFPs here to Delete</div></div>
+                                    <div id='dfpOutputId' class='dfpOutput'></div><a href="#" class='create dfpSendChanges' id='dfpSendChangesButtonId'>Submit to DECS</a>
+                                    <a href="#" class='create dfpSendChanges' id='dfpResetButtonId'>Cancel</a>
+                                    <a href="#" class='create dfpDeleteAll' id='dfpDeleteAllButtonId'>Drop All DFPs</a>
+                                </div>
+                            </div>
+                            <div id="two">
+
+
+                                <div class="headerBoxes">
+
+                                    <!--    <select name="tradeSortSwitch" id="tradeSortSwitchId" data-role="slider"  class='sortToggleButton'data-mini='true'>
+                                            <option value="trade">Trade</option>
+                                            <option value="sort">Sort</option>
+                                        </select>  -->
+                                    <div class='fourPartSelectBoxes'>
+                                        <fieldset data-role="controlgroup" data-type="horizontal">
+                                            <select data-mini='true' id="statusBaseId" >
+                                                <option  id ="cbos" value="BOS">BOS</option>
+                                                <option  id ="clga" value="LGA">LGA</option>
+                                                <option  id ="cphl" value="PHL">PHL</option>
+                                                <option  id ="cdca" value="DCA">DCA</option>
+                                                <option  id ="cudc" value="UDC">UDC</option>
+                                                <option  id ="cclt" value="CLT">CLT</option>
+                                                <option  id ="cmia" value="MIA">MIA</option>
+                                                <option  id ="cdfw" value="DFW">DFW</option>
+                                                <option  id ="cord" value="ORD">ORD</option>
+                                                <option  id ="cslt" value="SLT">SLT</option>
+                                                <option  id ="cphx" value="PHX">PHX</option>
+                                                <option  id ="csfo" value="SFO">SFO</option>
+                                                <option  id ="clax" value="LAX">LAX</option>
+                                                <option  id ="call" value="ALL">ALL</option>
+                                            </select>
+                                            <select  data-mini='true' id="statusPosId" >
+                                                <option  id ="cCA" value="CA">CA</option>
+                                                <option  id ="cRC" value="RC">RC</option>
+                                                <option  id ="cFO" value="FO">FO</option>
+                                                <option  id ="cFB" value="FB">FB</option>
+                                                <option  id ="cFC" value="FC">FC</option>
+                                                <option  id ="cAllFo" value="AllFo">All FO</option>
+                                            </select>
+                                            <select data-mini='true'  id="statusEquipId" >
+                                                <option  id ="c777" value="777">777</option>
+                                                <option  id ="c787" value="787">787</option>
+                                                <option  id ="c767" value="767">767</option>
+                                                <option  id ="c737" value="737">737</option>
+                                                <option  id ="c190" value="190">190</option>
+                                                <option  id ="cS80" value="S80">S80</option>
+                                                <option  id ="c320" value="320">320</option>
+                                                <option  id ="c330" value="330">330</option>
+                                            </select>
+                                            <select data-mini='true'  id="statusDivId" >
+                                                <option  id ="cDOM" value="DOM">DOM</option>
+                                                <option  id ="cINT" value="INT">INT</option>
+                                                <option  id ="cBoth" value="DOM-INT">D / I</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <a href="#" id='filterButtonId' class='filterButton' data-mini="true"  data-role="button">Filter</a>
+                                    <div class='filterStatus' id='filterStatusId'></div>
+
+                                    <img alt='' class='openTimeRefreshButton' id='openTimeRefreshButtonId' src="images/icon-arrows-arrow-circle-refresh.png-c200" />
+                                    <span class='dateBoxes' id="customRangeId">
+                                        <input class="customRangeBox" type="text" id="dateRangeDatePickerStart" />
+                                        <input class="customRangeBox" type="text" id="dateRangeDatePickerEnd" />
+                                    </span>
+                                </div>
+
+                                <div id="accountLeftId" class="accountLeft">
+                                    <table id="list"><tr><td/></tr></table>
+                                </div>
+                                <div id='quickTradeBoxesId' class='quickTradeBoxes'>
+                                    <div id='quickTradeBoxHeaderId' class='quickTradeBoxHeader'>
+                                        <img src='images/quickTradeBoxHeaderIconPlus.png' alt='' id='quickTradeBoxHeaderIconId' class='quickTradeBoxHeaderIcon'/>
+                                        <div class='quickTradeBoxHeaderText'>Quick Trade Boxes <span style='font-size: .9em; font-style: italic'> ...(Load multiple trades for quick execution when TTOT starts)</span></div>
+                                    </div>
+                                    <div class='quickTradeInputBoxGroup'>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='oneDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='onePickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div style='display: inline-block'><select id='oneDropTypeId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="oneDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="oneDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="oneDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='oneHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="oneHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="oneHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="oneTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='oneCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="oneGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='twoDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='twoPickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div  style='display: inline-block'><select id='twoDropTypeId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="twoDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="twoDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="twoDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='twoHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="twoHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="twoHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="twoTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='twoCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="twoGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='threeDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='threePickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div style='display: inline-block'><select id='threeDropTypeId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="threeDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="threeDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="threeDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='threeHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="threeHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="threeHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="threeTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='threeCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="threeGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='fourDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='fourPickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div style='display: inline-block'><select id='fourDropTypeId'  data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="fourDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="fourDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="fourDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='fourHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="fourHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="fourHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="fourTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='fourCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="fourGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='fiveDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='fivePickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div style='display: inline-block'><select id='fiveDropTypeId'  data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="fiveDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="fiveDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="fiveDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='fiveHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="fiveHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="fiveHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="fiveTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='fiveCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="fiveGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                        <div class='quickTradeInputBoxGroupButtons'>
+                                            <div id='sixDropId' class=' ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray myTripDroppable'>Drop YOUR Trip Here</div>
+                                            <div id='sixPickupId' class='ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset quickTradeDropBox gray pickupDroppable'>Drop a DESIRED Trip Here</div>
+                                            <div style='display: inline-block'><select id='sixDropTypeId'  data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="sixDropTypeUncId" value="UNC">UNC</option>
+                                                    <option  id ="sixDropTypePvdId" value="PVD">PVD</option>
+                                                    <option  id ="sixDropTypeVacId" value="VAC">VAC</option>
+                                                </select></div>
+
+                                            <div data-icon="false" data-iconpos="none" style='display: inline-block'><select id='sixHtmdId' data-mini='true' data-inline='true' class='dropTypeSelect'>
+                                                    <option  id ="sixHtmdPlusId" value="HTMD+">HTMD+</option>
+                                                    <option  id ="sixHtmdMinusId" value="HTMD-">HTMD-</option>
+                                                </select></div>
+                                            <a id="sixTestButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Test</a>
+                                            <input type='text' id='sixCommentsId' class='quickTradeDropBox gray commentsBox' placeholder="Comments"/>
+                                            <a id="sixGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='testButton quickTradeButton'>Go</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id='panelSlideBarId' class="panelSlideBar"></div>
+
+
+                                <div id='myTripTradeBoxHeaderId' class='myTripTradeBoxHeader tradeBoxHeader'>
+
+                                    <span id='tradeToggleId' class='twoBoxElement tradeToggle'>TEST MODE</span>
+                                    <a id="twoBoxTradeButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                       data-theme="a"  data-ajax="false" class='quickTradeButton twoBoxElement twoBoxButton'>Test Trade</a>
+                                    <a id="twoBoxDropButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                       data-theme="a"  data-ajax="false" class='quickTradeButton twoBoxElement twoBoxButton'>Test Drop</a>
+                                    <a id="twoBoxPickupButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                       data-theme="a"  data-ajax="false" class='quickTradeButton twoBoxElement twoBoxButton'>Test Pickup</a>
+                                    <div id='sevenDropTypeSelectId' class='sevenDropType twoBoxElement'>
+                                        <select id='sevenDropTypeId'  data-mini='true' data-inline='true'>
+                                            <option  id ="sevenDropTypeUncId" value="UNC">UNC</option>
+                                            <option  id ="sevenDropTypePvdId" value="PVD">PVD</option>
+                                            <option  id ="sevenDropTypeVacId" value="VAC">VAC</option>
+                                        </select></div>
+
+                                    <div id='sevenHtmdSelectId' class='sevenHtmd twoBoxElement'>
+                                        <select id='sevenHtmdId' data-mini='true' data-inline='true'>
+                                            <option  id ="sevenHtmdPlusId" value="HTMD+">HTMD+</option>
+                                            <option  id ="sevenHtmdMinusId" value="HTMD-">HTMD-</option>
+                                        </select></div>
+                                    <div id="googleCalConflictsLinkId" class="googleCalConflictsLink" >Conflicts</div>
+                                </div>
+                                <div id='myTripTradeBoxId' class='myTripTradeBox tradeBox'>
+
+
+                                    <div id='myTripTradeBoxDecsDataId' class='decsDataBox myTripTradeBoxDecsData'>
+                                        <!--          <br /><br /><br />
+                                           <input type='text' id='oneText' placeholder="one" class='t'/>
+                                          <input type='text' id='twoText' placeholder="two" class='t'/>
+                                             <input type='text' id='threeText' placeholder="three" class='t'/>  -->
+
+                                        <br />
+
+
+                                        <br /><br /><br />Click on 'My Trips' to fill this box.<br /><br />Once filled, you may drag it to the Quick Trade Boxes<br />or test for FAR 117 legalities.
+                                    </div>
+                                </div>
+                                <div id='openTripTradeBoxId' class='openTripTradeBox tradeBox'>
+                                    <div id='openTripTradeBoxDecsDataId' class='decsDataBox openTripTradeBoxDecsData'>
+                                        <div class='manualEntryVerbiage' id='manualEntryVerbiageId'>Click any open/posted trip to fill this box.<br />
+                                            Once filled, you may drag it to the Quick Trade Boxes<br />
+                                            to trade or pickup this trip.<br /><br />
+                                            Manual entry? Enter the sequence number: <br />
+                                            HSS/<input class='manualHssEntryCommand' placeholder="CA/34562"
+                                                       style='width:83px !important'
+                                                       type='text' id='manualHssEntrySeqNumberId' value=""/>
+
+
+                                            <input class="customRangeBox" type="text" id="manualHssEntryDateBoxId" />
+                                            <a id="manualHssEntryGoButtonId" data-role="button"  data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class='quickTradeButton ui-link
+                                               ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all ui-mini'>Go</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div id='filterOptionsId' class='filterData shadowLowerRight round'>
+                                    <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true" >
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='filterTripsSubmit hideFilter'
+                                           data-role='button' data-theme="a" data-mini='true'>Submit</a>
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='hideFilter'
+                                           data-role='button' data-theme="a" data-mini='true'>Cancel</a>
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='clearFilterTripsButton'
+                                           data-role='button' data-theme="a" data-mini='true'>Clear All</a>
+                                    </fieldset>
+                                    <div class='thinnerText'>Filter trips that are currently visible using the criteria below.</div>
+
+                                    <div class='thinnerText'>Dep Time Range <span id="clearDepTLinkId" class='clearTimeLinks'>clear</span></div>
+                                    <fieldset  data-role="controlgroup" class='filterDateRangeButtons'  data-type="horizontal" data-mini="true" >
+                                        <input placeholder='Earliest Dep Time' id='timeboxDepStartId' data-inline="true" type="text" data-role="datebox"
+                                               data-options='{"mode":"timebox","useFocus":true}'/>
+                                        <input placeholder='Latest Dep Time' id='timeboxDepEndId' data-inline="true" type="text" data-role="datebox"
+                                               data-options='{"mode":"timebox","useFocus":true}'/>
+                                    </fieldset>
+                                    <div class='thinnerText'>Arr Time Range <span id="clearArrTLinkId" class='clearTimeLinks'>clear</span></div>
+                                    <fieldset  data-role="controlgroup" class='filterDateRangeButtons'  data-type="horizontal" data-mini="true">
+                                        <input placeholder='Earliest Arr Time' id='timeboxArrStartId' data-inline="true" type="text" data-role="datebox"
+                                               data-options='{"mode":"timebox","useFocus":true}'/>
+                                        <input placeholder='Latest Arr Time' id='timeboxArrEndId' data-inline="true" type="text" data-role="datebox"
+                                               data-options='{"mode":"timebox","useFocus":true}'/>
+                                    </fieldset>
+                                    <div class='thinText'>Days Away From Home</div>
+
+
+                                    <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                        <select name="minDays" id="minDaysId">
+                                            <option value="none">Min</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <!-- etc. -->
+                                        </select>
+
+                                        <select name="maxDays"  id="maxDaysId">
+                                            <option value="none">Max</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <!-- etc. -->
+                                        </select>
+
+                                    </fieldset>
+                                    <div id='toggleDhViewId' class='thinText deadHeadClick'>Deadhead Options</div>
+                                    <fieldset id='deadheadViewId' data-role="controlgroup" data-mini="true">
+
+                                        <input type="checkbox" name="dhNoPref" id="dhNoPrefId" class="dhBoxes" value="t" checked='checked'/>
+                                        <label for="dhNoPrefId">No Preference</label>
+
+                                        <input type="checkbox" name="dhNoDead" id="dhNoDeadId" class="dhBoxes" value="t"/>
+                                        <label for="dhNoDeadId">No DH legs</label>
+
+                                        <input type="checkbox" name="dhReqAny" id="dhReqAnyId" class="dhBoxes" value="t"/>
+                                        <label for="dhReqAnyId">DH Req - Any Leg</label>
+
+                                        <input type="checkbox" name="dhReqFirst" id="dhReqFirstId" class="dhBoxes" value="t"/>
+                                        <label for="dhReqFirstId">DH Req - First Leg</label>
+
+                                        <input type="checkbox" name="dhReqLast" id="dhReqLastId" class="dhBoxes" value="t"/>
+                                        <label for="dhReqLastId">DH Req - Last Leg</label>
+
+                                        <input type="checkbox" name="dhReqFirstOrLast" id="dhReqFirstOrLastId" class="dhBoxes" value="t"/>
+                                        <label for="dhReqFirstOrLastId">DH Req - First or Last</label>
+
+                                        <input type="checkbox" name="dhNoAa" id="dhNoLastId" class="dhBoxes" value="t"/>
+                                        <label for="dhNoLastId">No DH on last leg of seq</label>
+
+                                        <input type="checkbox" name="dhNoAa" id="dhNoAaId" class="dhBoxes" value="t"/>
+                                        <label for="dhNoAaId">DH only on AA flights</label>
+                                    </fieldset>
+                                    <div class='formatBox'>
+                                        <div class='thinText bold'>Hours of Pay</div>
+                                        <label data-theme="a" for="minTotalPayMinutesId">Minimum total pay hours for this trip.</label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select name="minTotalPayMinutes" id="minTotalPayMinutesId" data-mini="true">
+                                                <option value="noPref">No Pref</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                                <option value="32">32</option>
+                                                <option value="33">33</option>
+                                                <option value="34">34</option>
+                                                <option value="35">35</option>
+                                            </select>
+                                            <select name="minTotalPayMinutesFraction" id="minTotalPayMinutesFractionId" data-mini="true">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </fieldset>
+
+
+
+                                        <label data-theme="a" for="minPayAndCreditId">Minimum credit hours for this trip.
+                                            <a href='#' id='creditHoursAlertId'>????</a></label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select name="minPayAndCredit" id="minPayAndCreditId" data-mini="true">
+                                                <option value="noPref">No Pref</option>
+                                                <option value="00">00</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                            </select>
+                                            <select name="minPayAndCreditFraction" id="minPayAndCreditFractionId" data-mini="true">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </fieldset>
+                                    </div> <!-- end formatBox-->
+                                    <div class='formatBox'>
+                                        <label data-theme="a" for="maxLegsId">Max legs per duty period.</label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select  name="maxLegs" id="maxLegsId"
+                                                     data-type="horizontal" data-position="inline" data-mini="true">
+                                                <option value="noPref">No Pref</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                            </select>
+                                        </fieldset>
+                                        <label data-theme="a" for="maxLegsPerSequenceId">Max legs per sequence.</label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select  name="maxLegsPerSequence" id="maxLegsPerSequenceId"
+                                                     data-type="horizontal" data-position="inline" data-mini="true">
+                                                <option value="noPref">No Pref</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="18">19</option>
+                                                <option value="18">20</option>
+                                            </select>
+                                        </fieldset>
+
+                                        <label data-theme="a" for="minLayoverId">Min-Max Layover duration.
+                                            <a href='#' id="minMaxLayoverHelpPopupId">????</a></label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select name="minLayover" id="minLayoverId" data-mini="true">
+                                                <option value="00">No Pref</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <select name="maxLayover" id="maxLayoverId" data-mini="true">
+                                                <option value="99">No Pref</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                        </fieldset>
+
+                                        <label data-theme="a" for="minTAFBId">Min-Max TAFB.
+                                            <a href='#' id='minMaxTafbPopupId'>????</a></label>
+                                        <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                            <select name="minTAFB" id="minTAFBId" data-mini="true">
+                                                <option value="00">No Pref</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                                <option value="90">90</option>
+                                                <option value="100">100</option>
+                                                <option value="110">110</option>
+                                                <option value="120">120</option>
+                                                <option value="130">130</option>
+                                                <option value="140">140</option>
+                                                <option value="150">150</option>
+                                                <option value="160">160</option>
+                                                <option value="170">170</option>
+                                                <option value="180">180</option>
+                                            </select>
+                                            <select name="maxTAFB" id="maxTAFBId" data-mini="true">
+                                                <option value="999">No Pref</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                                <option value="90">90</option>
+                                                <option value="100">100</option>
+                                                <option value="110">110</option>
+                                                <option value="120">120</option>
+                                                <option value="130">130</option>
+                                                <option value="140">140</option>
+                                                <option value="150">150</option>
+                                                <option value="160">160</option>
+                                                <option value="170">170</option>
+                                                <option value="180">180</option>
+                                            </select>
+                                        </fieldset>
+
+
+                                        <label for="allNightersId">Allow all-nighters?
+                                            <a href='#' id='allowAllNightersPopupId'>???</a></label>
+                                        <select data-inline="true" data-mini="true" id="allNightersId" name='allNighters'>
+                                            <option id="allNightersTrueId" name="allNightersTrue" value="y">Yes</option>
+                                            <option id="allNightersFalseId" name="allNightersFalse" value="n">No</option>
+                                        </select>
+                                    </div> <!-- end formatBox -->
+
+                                    <div class='formatBox'>
+                                        <div class='thinText bold'>City Preferences</div>
+                                        <div class='underThinText'> (separate with a space)</div>
+                                        <label data-theme="a" for="desiredLayoverCities">Enter cites you MUST layover in.</label>
+                                        <input data-theme="a" class='upperCase' placeholder='ex: ICN' data-mini="true"
+                                               name="desiredLayoverCities" id="desiredLayoverCitiesId" type="text"  />
+                                        <div class='innerFormatBox'>
+                                            <div class='thinnerText bold'>Prohibits</div>
+
+                                            <label data-theme="a" for="prohCitiesId">Enter cites you never want to see.<br />
+                                                <em>For all cities in Mexico, enter 'mexico'</em></label>
+                                            <input data-theme="a"  class='upperCaseRed' placeholder='ex: LIM mexico' name="prohCities" id="prohCitiesId" type="text"
+                                                   data-mini="true" />
+                                            <label data-theme="a" for="prohLayoverCitiesId">Enter cites you never want to layover in.<br />
+                                                <em>For all cities in Mexico, enter 'mexico'</em></label>
+                                            <input data-theme="a"  class='upperCaseRed' placeholder='ex: GDL' name="prohLayoverCities" id="prohLayoverCitiesId"
+                                                   type="text" data-mini="true" />
+                                            <label data-theme="a" for="prohCoterminalCitiesId">Enter prohibited Co-terminal Airports.</label>
+                                            <input data-theme="a"  class='upperCaseRed'  placeholder='ex: EWR' name="prohCoterminalCities"
+                                                   id="prohCoterminalCitiesId" type="text" data-mini="true" />
+
+
+                                            <div class='thinnerText bold'>Prohibited Days of the Week</div>
+                                            <label  for="prohDaysOfWeekId">Enter any days you DO NOT want to fly.<br />If the open trip touches any of these days,
+                                                <br />it will not be displayed. (ex: SUN THU)</label>
+                                            <input data-theme="a"  name="prohDaysOfWeek"
+                                                   class='upperCaseRed'   placeholder='ex: sat mon wed'  id="prohDaysOfWeekId" type="text" data-mini="true" />
+                                        </div>
+
+                                    </div>
+                                    <fieldset  data-role="controlgroup" data-type="horizontal" data-mini="true" >
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='filterTripsSubmit hideFilter'
+                                           data-role='button' data-theme="a" data-mini='true'>Submit</a>
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='hideFilter'
+                                           data-role='button' data-theme="a" data-mini='true'>Cancel</a>
+                                        <a href='#'  data-type="horizontal" data-position="inline"  class='clearFilterTripsButton'
+                                           data-role='button' data-theme="a" data-mini='true'>Clear All</a>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+                            <div id="three">
+
+                                <div id="generalDecsWindowId" class="generalDecsWindow">
+                                    <div id="generalDecsWindowHeaderId" class="generalDecsWindowHeader1">
+
+                                        <input type="text" id="generalDecsWindowInputWindowId"
+                                               class='generalDecsWindowInputWindow' placeholder='MANUAL COMMANDS HERE' value=''/>
+                                        <img alt='' src='images/delete-95.png' class='generalDecsWindowDeleteImage' id='deleteGeneralDecWWindowId'/>
+                                        <div id='generalBackButtonId' class='generalDirectionButton generalDirectionLeft' ><</div>
+                                        <div id='generalForwardButtonId' class='generalDirectionButton generalDirectionRight' >></div>
+
+                                    </div>
+
+                                    <div class="generalDecsWindowContent">
+                                        <div id="generalDecsWindowDecsDataId" data-stamp=""></div>
+                                    </div>
+                                </div>
+
+                                <div id="generalLeftPaneId" class="generalLeftPane">
+                                    <br />Flights between city pairs<br />
+                                    <div id='flightSchedulesStatusId' class='flightSchedulesChangeBoxes'>
+                                        <fieldset data-role="controlgroup" data-type="horizontal">
+                                            <select data-mini='true'  id="flightSchedulesCodeId" >
+                                                <option  value="26A">26A</option>
+                                                <option  value="26B">26B</option>
+                                                <option  value="26K">26K</option>
+                                                <option  value="26AMQ">26AMQ</option>
+                                                <option  value="26BMQ">26BMQ</option>
+                                                <option  value="26KMQ">26KMQ</option>
+                                                <option  value="26AUS">26AUS</option>
+                                                <option  value="26BUS">26BUS</option>
+                                                <option  value="26KUS">26KUS</option>
+                                                <option  value="26ATE">26ATE</option>
+                                                <option  value="26BTE">26BTE</option>
+                                                <option  value="26KTE">26KTE</option>
+                                                <option  value="26AXS">26AXS</option>
+                                                <option  value="26BXS">26BXS</option>
+                                                <option  value="26KXS">26KXS</option>
+                                            </select>
+                                            <select data-mini='true' id="flightSchedulesFromBaseId" >
+                                                <option value="BOS">BOS</option>
+                                                <option value="LGA">LGA</option>
+                                                <option value="DCA">DCA</option>
+                                                <option value="MIA">MIA</option>
+                                                <option value="DFW">DFW</option>
+                                                <option value="ORD">ORD</option>
+                                                <option value="SLT">SLT</option>
+                                                <option value="SFO">SFO</option>
+                                                <option value="LAX">LAX</option>
+                                            </select>
+                                            <select data-mini='true' id="flightSchedulesToBaseId" >
+                                                <option value="BOS">BOS</option>
+                                                <option value="LGA">LGA</option>
+                                                <option value="DCA">DCA</option>
+                                                <option value="MIA">MIA</option>
+                                                <option value="DFW">DFW</option>
+                                                <option value="ORD">ORD</option>
+                                                <option value="SLT">SLT</option>
+                                                <option value="SFO">SFO</option>
+                                                <option value="LAX">LAX</option>
+                                            </select>
+                                            <a href="#" data-role="button" id='citySwapButtonId' data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class="citySwapButton">Swap</a>
+                                        </fieldset>
+                                        <input class="customRangeBox" type="text" id="flightSchedulesDatePicker" />
+                                        <a href="#" data-role="button" id='flightSchedulesGoButtonId' data-mini="true" data-inline='true'
+                                           data-theme="a"  data-ajax="false" class="flightSchedulesGoButton">GO</a>  <a href='#' id='flightSchedulesHelpId'>????</a>
+                                        <hr>
+
+
+                                        <fieldset data-role="controlgroup" data-type="horizontal">
+                                            <select data-mini='true'  id="n4CodeId" >
+                                                <option  value="N4D">N4D</option>
+                                                <option  value="N4I">N4I</option>
+                                                <option  value="N3D">N3D</option>
+                                                <option  value="N3I">N3I</option>
+                                                <option  value="N3DO">N3DO</option>
+                                                <option  value="N3IO">N3IO</option>
+
+                                            </select>
+                                            <select data-mini='true' id="n4BaseId" >
+                                                <option value="BOS">BOS</option>
+                                                <option value="LGA">LGA</option>
+                                                <option value="PHL">PHL</option>
+                                                <option value="DCA">DCA</option>
+                                                <option value="UDC">UDC</option>
+                                                <option value="CLT">CLT</option>
+                                                <option value="MIA">MIA</option>
+                                                <option value="DFW">DFW</option>
+                                                <option value="ORD">ORD</option>
+                                                <option value="SLT">SLT</option>
+                                                <option value="PHX">PHX</option>
+                                                <option value="SFO">SFO</option>
+                                                <option value="LAX">LAX</option>
+                                            </select>
+                                            <select data-mini='true' id="n4EquipId" >
+                                                <option value="737">737</option>
+                                                <option value="767">767</option>
+                                                <option value="777">777</option>
+                                                <option value="787">787</option>
+                                                <option value="190">190</option>
+                                                <option value="S80">S80</option>
+                                                <option value="320">320</option>
+                                                <option value="330">330</option>
+                                                <option value="350">350</option>
+                                            </select>
+                                            <select data-mini='true' id="n4PosId" >
+                                                <option value="CA">CA</option>
+                                                <option value="RC">RC</option>
+                                                <option value="FO">FO</option>
+                                                <option value="FB">FB</option>
+                                                <option value="FC">FC</option>
+                                            </select>
+                                            <select data-mini='true' id="n4MonthId" >
+                                                <option value="PRESENT">Current</option>
+                                                <option value="NEXT">Next</option>
+                                            </select>
+                                            <a href="#" data-role="button" id='n4GoButtonId' data-mini="true" data-inline='true'
+                                               data-theme="a"  data-ajax="false" class="citySwapButton">Go</a>
+                                        </fieldset>
+
+                                        <hr>
+                                        <!--   end N4 getting  -->
+
+                                        <div id='glossarySearchBoxHolderId' class='glossaryBoxHolder'>
+                                            <input type='text' id='glossarySearchBoxId' class='glossarySearchBox'
+                                                   placeholder='Search DECS Commands'/>
+                                        </div>
+                                        <div id='glossaryId' class='glossary'>glossary here</div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="four">
+                                <webview src='' id='wholeBrowserId' class='wholeBrowser browser'></webview>
+                            </div>
+
+                            <div id="five">
+                                <webview src='' id='leftBrowserId' class='leftBrowser browser'></webview>
+                                <webview src='' id='rightBrowserId' class='rightBrowser browser'></webview>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id='settingsContentId' class='mainWindow ui-page-theme-a'>
+                    <div  data-role="content" class="contentMidSequence round">
+                        <label for="changeStatusId">Change your 4 part status for this session only.</label>
+                        <div id='changeStatusId' class='fourPartSelectChangeBoxes'>
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <select data-mini='true' id="changeStatusBaseId" >
+                                    <option  id ="cSbos" value="BOS">BOS</option>
+                                    <option  id ="cSlga" value="LGA">LGA</option>
+                                    <option  id ="cSphl" value="PHL">PHL</option>
+                                    <option  id ="cSdca" value="DCA">DCA</option>
+                                    <option  id ="cSudc" value="UDC">UDC</option>
+                                    <option  id ="cSclt" value="CLT">CLT</option>
+                                    <option  id ="cSmia" value="MIA">MIA</option>
+                                    <option  id ="cSdfw" value="DFW">DFW</option>
+                                    <option  id ="cSord" value="ORD">ORD</option>
+                                    <option  id ="cSslt" value="SLT">SLT</option>
+                                    <option  id ="cSphx" value="PHX">PHX</option>
+                                    <option  id ="cSsfo" value="SFO">SFO</option>
+                                    <option  id ="cSlax" value="LAX">LAX</option>
+                                    <option  id ="cSall" value="ALL">ALL</option>
+                                </select>
+                                <select  data-mini='true' id="changeStatusPosId" >
+                                    <option  id ="cSCA" value="CA">CA</option>
+                                    <option  id ="cSRC" value="RC">RC</option>
+                                    <option  id ="cSFO" value="FO">FO</option>
+                                    <option  id ="cSFB" value="FB">FB</option>
+                                    <option  id ="cSFC" value="FC">FC</option>
+                                    <option  id ="cSAllFo" value="AllFo">All FO</option>
+                                </select>
+                                <select data-mini='true'  id="changeStatusEquipId" >
+                                    <option  id ="cS777" value="777">777</option>
+                                    <option  id ="cS787" value="787">787</option>
+                                    <option  id ="cS767" value="767">767</option>
+                                    <option  id ="cS737" value="737">737</option>
+                                    <option  id ="cS190" value="190">190</option>
+                                    <option  id ="cSS80" value="S80">S80</option>
+                                    <option  id ="cS320" value="320">320</option>
+                                    <option  id ="cS330" value="330">330</option>
+                                </select>
+                                <select data-mini='true'  id="changeStatusDivId" >
+                                    <option  id ="cSDOM" value="DOM">DOM</option>
+                                    <option  id ="cSINT" value="INT">INT</option>
+                                    <option  id ="cSBoth" value="DOM-INT">D / I</option>
+                                </select>
+                            </fieldset>
+                        </div><br />
+                        Add or remove flight Schedule city pairs here.  They will be added to the drop down menus.<br />
+                        Separate each 3 letter city with a comma.
+                        <textarea id='flightSchedulesBasesListId' class='flightSchedulesBasesList'></textarea><br />
+
+                        <div style="max-width: 5300px">
+                            <div style="float:left; width: 170px">
+                                <label for="flip-No24OnMiniId">SHOW the 24s on the Mini Calendar?</label>
+                                <select name="flip-No24OnMini" id="flip-No24OnMiniId" data-role="slider" data-mini='true'>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select></div>
+                            <div style="float: right; width: 170px">
+                                <label for="flip-hiProjId">Would you like to SHOW the Pay Summaries?</label>
+                                <select name="flip-hiProj" id="flip-hiProjId" data-role="slider" data-mini='true'>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select></div></div>
+
+
+
+                        <div class='adminUseOnly smallText'>
+                            <a href='#' id='adminUseOnlyId' >Admin Use Only</a></div>
+                        <div id='adminButtonsId' style='display: none'>
+                            <a href="#" id='printMasterSaveObjectId'> print object</a><br />
+                            <a href="#" id='testWorker'> test worker</a><br />
+                            <a href="#" id='testTradeableTripsId'> test tradeable trips</a>
+                            <input type='text' id='n4tTestId' value='N4T/10069/21JAN'/> <input type='text' id='n4tLTestId' value='N4TL/10069/21JAN'/> <br />
+                            <label for="flip-1">Simulate Trading:</label>
+                            <select name="flip-1" id="flip-1" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-2">Simulate Fail HT/:</label>
+                            <select name="flip-2" id="flip-2" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-3">Simulate Fail HTS/A:</label>
+                            <select name="flip-3" id="flip-3" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-3a">Simulate Fail HTO/A:</label>
+                            <select name="flip-3a" id="flip-3a" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-4">Simulate Fail HTS/B:</label>
+                            <select name="flip-4" id="flip-4" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-5">Simulate Fail HTMD</label>
+                            <select name="flip-5" id="flip-5" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <label for="flip-6">Simulate Fail HZ  -- set subExpired = true</label>
+                            <select name="flip-6" id="flip-6" data-role="slider" data-mini='true'>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+
+                            <input type='text' value='-22' id='testTop'/><br />
+                            <input type='text' value='110' id='testOne'/><br />
+                            <input type='text' value='-20' id='testTwo'/>
+                            <input type='text' value='486' id='testThree'/>
+                            <input type='text' value='179' id='testFour'/>
+                            <input type='text' value='-90' id='testFive'/>
+                            <input type='text' value='40' id='testSix'/>
+                            <hr>
+                            <input type='text' value='90' id='testSeven'/>
+                            <input type='text' value='90' id='testEight'/>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- login content -->
+                <div id='loginContentId' class='mainWindow ui-page-theme-a'>
+                    <div class='contentMidSequence loginButtons'>
+                        <h2 class='titleForApp'>LiteSabre Nimble Trader</h2>
+                        <p>Please login to continue</p>
+                        <span class="userNamePlace" id="userNamePlaceId"></span>
+                        <input type='text' data-theme='a' style='text-transform: lowercase;' id='userNameId' placeholder="LiteSabre Username"/>
+                        <input type='password' data-theme='a' id='passId' placeholder="litesabre password"/>
+
+                        <br />
+                        <span id='asteriskUserId'>**To use a different username, you must remove the app from Chrome, and re-install it. To remove, open a new tab in Chrome, and type 'chrome://apps' <br />
+                            Right click the Nimble Trader icon to remove the app.  Then re-install it again from
+                            <a href='https://www.aapocket.com/liteSabreNimbleTraderDisplay.php' target="_blank">HERE</a><br /></span>
+                        <!--
+                        <input type='text' data-theme='a' style='text-transform: uppercase;' id='empNumId' placeholder="Employee Number"/>
+                        <input type='text' data-theme='a' style='text-transform: uppercase;' id='decsPassId' placeholder="DECS Password**"/>
+                        <input type='text' data-theme='a' id='apaPassId' placeholder="APA Password**"/> -->
+
+                        <a id="loginButtonId" data-role="button" data-mini="true"
+                           data-theme="a" data-ajax="false">Submit</a>
+                        <img src='images/wait21.gif' id='loginWaitImageId' alt=''/>
+                        <br />
+                        <!-- about content -->
+
+                        <div id="aboutId"
+                             class="about" >Nimble Trader build <span id='buildId'></span><br />by Forty Foot Designs, LLC., 2015-2018.<br />
+                            All right reserved.<p>Use of this app requires an account with LiteSabre,
+                                and is limited to American Airlines* pilots who are members of the Allied Pilot's Association*.
+                                <br /> <br />Visit us at www.aapocket.com</p>
+                            <p style='font-size: 12px'>*LiteSabre and aapocket.com are not affiliated with American Airlines or the Allied Pilots Association.</p>
+
+                            <!--
+                               <p style='font-size: 12px'>**Your APA password is only saved locally and is never transmitted anywhere, except to APA TASC.</p>
+                            <p style='font-size: 12px'>***Your DECS password is the one you use to login to Second Stage Sabre, is only saved locally and is never transmitted anywhere, except to APA TASC.</p>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- main content  -->
+        </div>
+        <div id="smallCalendarMenuId" class="smallCalendarMenu shadow">
+            <div class="smallCalendarLine" id="dropGetId" data-command=''>Drop</div>
+            <div class="smallCalendarLine" id="postGetId" data-command=''>Post</div>
+            <div class="smallCalendarLine" id="tradeGetId" data-command=''>Trade</div>
+            <div class="smallCalendarLine" id="allOpenTimeGetId" data-command=''>All Open Time</div>
+            <div class="smallCalendarLine" id="legalOpenTimeGetId" data-command=''>Legal Open Time</div>
+            <div class="smallCalendarLine" id="hi33LongGetId" data-command=''>HI33 Long</div>
+            <div class="smallCalendarLine" id="hi33ShortGetId" data-command=''>HI33 Short</div>
+        </div>
+        <div class="hoverPopup">SUSPEND</div>
+        <div class="keyPadMain" id='keyPadMainId'>
+            <h4>Enter your LiteSabre PIN (<a href='https://www.aapocket.com/setPin.php' target='blank'>I forgot</a>)</h4>
+            <div id='pinWindow' class='window'>_ _ _ _</div>
+            <div id='keypad' class='keypad'>
+                <input type='button' class='button' id='_1' value='1'/>
+                <input type='button' class='button' id='_2' value='2'/>
+                <input type='button' class='button' id='_3' value='3'/><br />
+                <input type='button' class='button' id='_4' value='4'/>
+                <input type='button' class='button' id='_5' value='5'/>
+                <input type='button' class='button' id='_6' value='6'/><br />
+                <input type='button' class='button' id='_7' value='7'/>
+                <input type='button' class='button' id='_8' value='8'/>
+                <input type='button' class='button' id='_9' value='9'/><br />
+                <input type='button' class='button' id='_back' value='<-'/>
+                <input type='button' class='button' id='_0' value='0'/>
+                <input type='button' class='button' id='_X' value='X'/><br />
+            </div>
+
+        </div>
+    </body>
+</html>

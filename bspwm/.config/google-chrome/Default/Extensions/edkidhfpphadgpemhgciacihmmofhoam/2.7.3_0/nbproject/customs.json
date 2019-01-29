@@ -1,0 +1,12 @@
+{
+    "elements": {
+        "webview": {
+            "attributes": {
+                "src": {},
+                "id": {},
+                "class": {}
+            }
+        }
+    },
+    "attributes": {}
+}

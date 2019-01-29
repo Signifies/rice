@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/icon19.png",
+         "38": "images/icon38.png"
+      },
+      "default_title": "Simple Blocker"
+   },
+   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+   "description": "Easily block distracting or annoying websites and boost your productivity.",
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC07WOEm3pxfugaU6E5COoehOcpME2+BI8UAzTIImPhr7BCzSeKQ+ll9cAhaZ7MhJz11DmABTTRIoZVzSeEF60gvU0td7osTKPCMxFtmAges2UkfUkOnXAKiTU82O/qn2BWdOSuDx5aQaEUAE5YmsQfnCdDcnxXeZUb4vmcjIUbdwIDAQAB",
+   "manifest_version": 2,
+   "name": "Simple Blocker",
+   "options_page": "options.html",
+   "permissions": [ "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.6.1"
+}

@@ -1,0 +1,27 @@
+2019/01/27-22:29:39.842 2644 Reusing MANIFEST /home/shandian/.config/google-chrome/Default/Session Storage/MANIFEST-000001
+2019/01/27-22:29:39.842 2644 Recovering log #118
+2019/01/27-22:29:39.842 2644 Reusing old log /home/shandian/.config/google-chrome/Default/Session Storage/000118.log 
+2019/01/27-22:31:58.170 2a9a Level-0 table #122: started
+2019/01/27-22:31:58.178 2a9a Level-0 table #122: 20093 bytes OK
+2019/01/27-22:31:58.181 2a9a Delete type=0 #118
+2019/01/27-22:40:23.493 2a9a Level-0 table #124: started
+2019/01/27-22:40:23.501 2a9a Level-0 table #124: 17259 bytes OK
+2019/01/27-22:40:23.504 2a9a Delete type=0 #121
+2019/01/27-22:40:23.504 2a9a Compacting 4@0 + 1@1 files
+2019/01/27-22:40:23.513 2a9a Generated table #125@0: 2357 keys, 107011 bytes
+2019/01/27-22:40:23.514 2a9a Compacted 4@0 + 1@1 files => 107011 bytes
+2019/01/27-22:40:23.516 2a9a compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/01/27-22:40:23.516 2a9a Delete type=2 #115
+2019/01/27-22:40:23.516 2a9a Delete type=2 #119
+2019/01/27-22:40:23.517 2a9a Delete type=2 #117
+2019/01/27-22:40:23.517 2a9a Delete type=2 #124
+2019/01/27-22:40:23.517 2a9a Delete type=2 #122
+2019/01/27-22:57:58.877 2a9a Level-0 table #127: started
+2019/01/27-22:57:58.883 2a9a Level-0 table #127: 24803 bytes OK
+2019/01/27-22:57:58.885 2a9a Delete type=0 #123
+2019/01/27-23:08:30.231 2a9a Level-0 table #129: started
+2019/01/27-23:08:30.234 2a9a Level-0 table #129: 16357 bytes OK
+2019/01/27-23:08:30.236 2a9a Delete type=0 #126
+2019/01/27-23:53:29.635 2a9a Level-0 table #131: started
+2019/01/27-23:53:29.639 2a9a Level-0 table #131: 22082 bytes OK
+2019/01/27-23:53:29.641 2a9a Delete type=0 #128

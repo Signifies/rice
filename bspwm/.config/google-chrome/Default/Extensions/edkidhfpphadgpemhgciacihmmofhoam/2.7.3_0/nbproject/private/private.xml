@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="71">
+        <file>
+            <url>window.html</url>
+            <bookmark id="28">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="29">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>js/apaComm.js</url>
+            <bookmark id="71">
+                <name/>
+                <line>1799</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>js/liteSabreComm.js</url>
+            <bookmark id="56">
+                <name/>
+                <line>286</line>
+                <key/>
+            </bookmark>
+            <bookmark id="59">
+                <name/>
+                <line>359</line>
+                <key/>
+            </bookmark>
+            <bookmark id="70">
+                <name/>
+                <line>3350</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>js/mainFunctions.js</url>
+            <bookmark id="69">
+                <name/>
+                <line>3472</line>
+                <key/>
+            </bookmark>
+            <bookmark id="68">
+                <name/>
+                <line>3536</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>js/openTimeGrid.js</url>
+            <bookmark id="58">
+                <name/>
+                <line>2166</line>
+                <key/>
+            </bookmark>
+            <bookmark id="34">
+                <name/>
+                <line>2267</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>js/fullcalendar.js</url>
+            <bookmark id="31">
+                <name/>
+                <line>9823</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/Rob/Dropbox/LiteSabreNimbleTraderProd/window.html</file>
+        </group>
+        <group name="PHP">
+            <file>file:/Users/Rob/Dropbox/LiteSabreNimbleTraderProd/js/universal.js</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,22 @@
+{
+   "app": {
+      "background": {
+         "scripts": [ "js/background.js" ]
+      }
+   },
+   "description": "A super-fast manual DECS trip trading platform.",
+   "icons": {
+      "128": "images/iconMarket128.png",
+      "16": "images/iconMarket16.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ0wl2roDLvpTQc0QdYkeYCLhFWF4JzmYSqkwchobAOo4XsopT7FLXSw3pRZxPas4MId/OABoxLt+8187S7O4JK77am+RaqAH5F0HWexEFsqlvl0zSmQAqzo0Gq5zEeN7Kyf6cbO/5RhFePCTDSoT6i/OxuynwBM7tDlge9kmZNn4TOTs0UQt9QMFKdS2u0VcrRR0DbT6SJ4osDzfadNIEEaJvKhkJkFIyI8lUkx+HyHBxHoPfJdWvCAEROHrQTfp5e18dghstKmQnNVLScXiIB8r9+f/DzdcG71Ubv1K/bI8IpYEiHw4FVkHmrVDMGMVQsu9VUXoT5i8tmmJp5XlQIDAQAB",
+   "manifest_version": 2,
+   "name": "LiteSabre Nimble Trader",
+   "permissions": [ "http://localhost:8888/", "https://www.aapocket.com/", "http://www.aapocket.com/", "https://tasc.alliedpilots.org/", "https://login.alliedpilots.org/", "https://www.alliedpilots.org/", "https://memberinfo.alliedpilots.org/", "https://legacy.alliedpilots.org/", "https://negotiations.alliedpilots.org/", "https://retiree.alliedpilots.org/", "http://www.alliedpilots.org/", "unlimitedStorage", "storage", "webview" ],
+   "sandbox": {
+      "pages": [ "build.js", "js/Drop.js", "js/Trade.js", "js/TradeCredentials.js", "js/alertify.min.js", "js/apaComm.js", "js/codeTemplates.js", "js/date.js", "js/dateBox.js", "js/dbComm.js", "js/dfpMoveCalculator.js", "js/fullcalendar.js", "js/grid.locale-en.js", "js/jquery-1.8.2.js", "js/jquery-ui.min_limited_functionality.js", "js/jquery.jqGrid.src.js", "js/jquery.mobile-1.4.0.js", "js/liteSabreComm.js", "js/mainFunctions.js", "js/moment.min.js", "js/openTimeGrid.js", "js/parseDetailsOfHss.js", "js/touch-punch.js", "js/tradeAndDropFunctions.js", "js/momentTimezone-2010-2020.js" ]
+   },
+   "short_name": "Nimble Trader",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.7.3"
+}

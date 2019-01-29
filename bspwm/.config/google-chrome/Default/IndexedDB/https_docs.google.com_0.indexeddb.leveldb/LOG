@@ -1,0 +1,21 @@
+2019/01/28-14:40:37.281 2bb Reusing MANIFEST /home/shandian/.config/google-chrome/Default/IndexedDB/https_docs.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2019/01/28-14:40:37.281 2bb Recovering log #71
+2019/01/28-14:40:37.293 2bb Reusing old log /home/shandian/.config/google-chrome/Default/IndexedDB/https_docs.google.com_0.indexeddb.leveldb/000071.log 
+2019/01/28-14:40:37.935 4d2 Level-0 table #77: started
+2019/01/28-14:40:37.958 4d2 Level-0 table #77: 585116 bytes OK
+2019/01/28-14:40:37.961 4d2 Delete type=0 #71
+2019/01/28-14:40:38.192 4d2 Compacting 1@1 + 1@2 files
+2019/01/28-14:40:38.222 4d2 Generated table #78@1: 2251 keys, 1939525 bytes
+2019/01/28-14:40:38.222 4d2 Compacted 1@1 + 1@2 files => 1939525 bytes
+2019/01/28-14:40:38.225 4d2 compacted to: files[ 0 0 1 0 0 0 0 ]
+2019/01/28-14:40:38.225 4d2 Delete type=2 #77
+2019/01/28-14:40:38.225 4d2 Delete type=2 #74
+2019/01/28-21:53:15.020 4d2 Level-0 table #80: started
+2019/01/28-21:53:15.031 4d2 Level-0 table #80: 612773 bytes OK
+2019/01/28-21:53:15.033 4d2 Delete type=0 #76
+2019/01/28-22:03:14.586 4d2 Compacting 1@1 + 1@2 files
+2019/01/28-22:03:14.609 4d2 Generated table #81@1: 2251 keys, 1939612 bytes
+2019/01/28-22:03:14.609 4d2 Compacted 1@1 + 1@2 files => 1939612 bytes
+2019/01/28-22:03:14.614 4d2 compacted to: files[ 0 0 1 0 0 0 0 ]
+2019/01/28-22:03:14.614 4d2 Delete type=2 #78
+2019/01/28-22:03:14.614 4d2 Delete type=2 #80

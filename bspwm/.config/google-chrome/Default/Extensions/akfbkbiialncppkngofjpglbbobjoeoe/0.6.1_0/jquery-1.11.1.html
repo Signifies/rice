@@ -1,0 +1,157 @@
+<html>
+	<head>
+		<title>Simple Blocker - Options</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+	<body>
+		<div class="box" id="timerstatus">
+			<u>Sleep Timer ON</u><br />
+			<span id="timeleft"></span><br />
+			remaining<br />
+			<a class="cancel" id="cancel">Cancel</a>
+		</div>
+		<div class="box" id="optionsbox">
+			<div class="header">
+				<div class="subheader1">
+					<img src="images/icon128.png" height="128" width="128" />
+				</div>
+				<div class="subheader2">
+					<img src="images/options-header.png" alt="Simple Blocker - Options" />
+				</div>
+				<div class="subheader3">
+					<h5 id="version">Version <span id="versionheader"></span>&nbsp;&nbsp;</h5>
+					<div class="ratediv">
+						<button class="ratebutton" id="rateandreview">Rate & Review</button>
+					</div>
+					<div class="likediv">
+						<iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsimpleblocker.com%2F&amp;width=60&amp;layout=box_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:65px;" allowTransparency="true"></iframe>
+					</div>
+				</div>
+			</div>
+
+			<!-- main power switch -->
+			<div class="optionrow" id="toprow">
+				<div class="optionleft" id="power">
+					<img src="images/main-power-switch.png" alt="Main Power Switch" />
+					<br />
+					<div class="onoffswitch">
+					    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+					    <label class="onoffswitch-label" for="myonoffswitch">
+					        <div class="onoffswitch-inner"></div>
+					        <div class="onoffswitch-switch"></div>
+					    </label>
+					</div>
+				</div>
+				<div class="optionright" id="sleep">
+					<img src="images/sleep-timer.png" alt="Sleep Timer" />
+					<input type="text" id="hours" placeholder="Hrs"/>
+					<span style="font-size:20px"> : </span><input type="text" id="minutes" placeholder="Min"/>
+					<br />
+					<button class="timerset" id="timerset">Set Timer</button>
+				</div>
+			</div>
+
+			<!-- sites to block -->
+			<div class="optionrow">
+				<div id="blocklistHeader">
+					<img src="images/website-blocklist.png" alt="Website Blocklist" />
+				</div>
+				<div class="optionleft" id="blockrow">
+					<textarea cols="30" rows="20" id="blockbox"></textarea>
+					<br />
+					<button class="saveblocklist" id="saveblocklist">Save Blocklist</button>
+				</div>
+				<div class="optionright" id="blockrow">
+					In the text box to the left, input the sites you would like to block. Each line should contain 1 site. Any website URL that contains one of the elements in the blocklist will be blocked. One example of a valid blocklist is as follows: <br />
+					<br />
+					<strong>
+					twitter.com<br />
+					cnn.com<br />
+					reddit.com<br />
+					www.facebook.com<br />
+					news.google.com<br />
+					</strong>
+					<br />
+					All 5 entries shown are valid. The format used in the top 3 entries is the simplest, and will block all pages on Twitter, CNN, or Reddit. The 4th entry is more specific, and will block the main Facebook site, but will not block subdomains like <u>developers.facebook.com</u>. The 5th entry is a subdomain specific entry, and will block Google News, but allow other Google services like <u>finance.google.com</u>.
+					<br /><br />
+					<span id="warning">Warning: Be careful not to use excessively vague or short entries on the website block list, such as "/" or "www.", as almost every website URL matches those elements.</span>
+
+				</div>
+			</div>
+
+			<!-- hardcore mode block -->
+			<div class="optionrow" id="lockdown">
+				<img src="images/enhanced-blocking.png" alt="Enhanced Blocking (optional, proceed with caution)" />
+				<div class="optionleft" id="step1">
+					<br />
+					<h4>Step 1:</h4>
+					<h4>Enable Simple Blocker in Incognito Mode</h4>
+				</div>
+				<div class="optionright" id="step1">
+					<br />
+					<br />
+					Go to the <a href="#lockdown" id="gotoextensions">Chrome Extensions Menu</a> and check the box next to "Allow in incognito" under the listing for Simple Blocker. This will make it harder to circumvent the website blocking mechanism used by Simple Blocker.
+				</div>
+				<div class="optionleft" id="step2">
+					<br />
+					<h4>Step 2:</h4>
+					<h4>Block the Chrome Extensions Menu</h4>
+					<div class="onoffswitch">
+					    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="blockextensions" checked>
+					    <label class="onoffswitch-label" for="blockextensions">
+					        <div class="onoffswitch-inner"></div>
+					        <div class="onoffswitch-switch"></div>
+					    </label>
+					</div>
+				</div>
+				<div class="optionright" id="step2">
+					<br />
+					<br />
+					When this switch is set to ON, the Extensions page will be blocked, making it harder to disable this app.
+				</div>
+				<div class="optionleft" id="step3">
+					<br />
+					<h4>Step 3:</h4>
+					<h4>Enable Password Protection and Set a Password for accessing this options menu</h4>
+					<div class="passwordoptions">
+						<div class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="passprotect" checked>
+						    <label class="onoffswitch-label" for="passprotect">
+						        <div class="onoffswitch-inner"></div>
+						        <div class="onoffswitch-switch"></div>
+						    </label>
+						</div>
+						<span id="randpassbox">
+							<a class="randompassword" id="randompassword">Random Password</a>
+						</span>
+					</div>
+					<div class="passwordsetbox">
+						<p>Enter new password:</p>
+						<input type="password" id="password1">
+						<p>Re-enter password:</p>
+						<input type="password" id="password2">
+						<br />
+						<button class="saveblocklist" id="savepassword">Save New Password</button>
+					</div>
+				</div>
+				<div class="optionright" id="step3">
+					<br />
+					<br />
+					To enable password protection, simply flip the switch to ON and set a password using the two fields provided. Be careful, though - once you enable the password lock, in addition to enabling Simple Blocker in Incognito Mode and blocking the Extensions Menu, you will only be able to access this options menu by entering the correct password.
+					<br />
+					<br />
+					<div class="status" id="passwordstatus"></div>
+					<br />
+					<div class="status" id="passwordstatus2"></div>
+				</div>
+			</div>
+		</div>
+		<p class="footersmalltext">
+			<strong>Simple Blocker has successfully blocked <span id="footertally"></span> blocklist access attempts on this computer.</strong>
+			<br />
+			Copyright 2016 Matt Vukas - For support, visit 
+			<a href="https://simpleblocker.com/#support" target="_blank">simpleblocker.com/#support</a>.
+		</p>
+	</body>
+</html>

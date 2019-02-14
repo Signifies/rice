@@ -8,11 +8,13 @@
 # # # # # # # # # # # # # # # # # # # #
 
 # BSPWM
-cp -r ~/.config/bspwm/ $HOME/rice/Arch
+cp -r ~/.config/bspwm/ $HOME/rice/Arch/
 echo "Copied BSPWM..."
 # sxhkd
-cp -r ~/.config/sxhkd/ $HOME/rice/Arch
+cp -r ~/.config/sxhkd/ $HOME/rice/Arch/
 echo "Copied sxhkd..."
+# Lemon Bar
+cp -r ~/.config/bar $HOME/rice/Arch/
 # Compton
 cp -r ~/.config/compton/ $HOME/rice/Arch
 echo "Copied Compton..."

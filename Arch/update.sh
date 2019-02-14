@@ -8,14 +8,14 @@
 # # # # # # # # # # # # # # # # # # # #
 
 # BSPWM
-cp -r ~/.config/bspwm/ $HOME/updated-dots
+cp -r ~/.config/bspwm/ $HOME/rice/Arch
 echo "Copied BSPWM..."
 # sxhkd
-cp -r ~/.config/sxhkd/ $HOME/updated-dots
+cp -r ~/.config/sxhkd/ $HOME/rice/Arch
 echo "Copied sxhkd..."
 # polybar
-cp -r ~/.config/polybar/ $HOME/updated-dots
+cp -r ~/.config/polybar/ $HOME/rice/Arch
 echo "Copied Polybar..."
 # Compton
-cp -r ~/.config/compton/ $HOME/updated-dots
+cp -r ~/.config/compton/ $HOME/rice/Arch
 echo "Copied Compton..."

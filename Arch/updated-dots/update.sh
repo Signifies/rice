@@ -3,8 +3,8 @@
 # Example
 # cp ~/Documents/ashley.txt $HOME/updated-dots
 # echo "Moved file..."
-# cp ~/Documents/evan.txt $HOME/updated-dots
-# echo "Moved Evans file."
+# cp ~/Documents/james.txt $HOME/updated-dots
+# echo "Moved James file."
 # # # # # # # # # # # # # # # # # # # #
 
 # BSPWM

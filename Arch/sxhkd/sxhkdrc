@@ -8,7 +8,12 @@ super + Return
 
 # program launcher using rofi.
 super + @space
-	rofi -show run
+	rofi -show drun
+
+# Rofi window menu
+alt + @space
+  rofi -show window
+
 # Take a screenshot:
 control + Print
 	scrot -e 'mv $f ~/Pictures/screenshots'

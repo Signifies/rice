@@ -3,19 +3,18 @@
 sxhkd &
 deepin-terminal &
 google-chrome-stable &
+dde-file-manager &
 
 #bspc monitor -d I II III IV V VI VII VIII IX X
 
 # Polybar
 # $HOME/.config/polybar/launch.sh
-# Disabled for now until a simpler configuration can be made. 
+# Disabled for now until a simpler configuration can be made.
 
 #My monitor setup.
 for monitor in $(bspc query -M); do
-	bspc monitor $monitor -d A B C D E F G H
+	bspc monitor $monitor -d A B C D E F
 done
-
-
 
 #bspc monitor HDMI-0 -d 1 2 3 4 5
 #bspc monitor HDMI-1 -d 6 7 8 9 0
@@ -33,5 +32,5 @@ bspc rule -a htop desktop=^1 state=floating
 bspc rule -a deepin-terminal desktop=^1 state=floating
 bspc rule -a Screenkey manage=off
 
-# Wallpaper using feh currently. #Daisy Ridley FTW.
-feh --bg-scale /home/shandian/Pictures/wallpapers/prefered/wallhaven-356407.png
+# Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
+feh --bg-scale $HOME/shandian/Pictures/wallpapers/wallpapers-updated/w4FnFLL.jpg

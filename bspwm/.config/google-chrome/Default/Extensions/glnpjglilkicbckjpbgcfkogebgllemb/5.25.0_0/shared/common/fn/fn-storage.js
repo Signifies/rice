@@ -1,1 +1,0 @@
-(function n(){var a=Okta.fn.storage={},r=JSON.stringify,t=JSON.parse;a.wrapVal=function(n){return r({val:n})};a.unwrapVal=function(n){return n?t(n).val:null}})();

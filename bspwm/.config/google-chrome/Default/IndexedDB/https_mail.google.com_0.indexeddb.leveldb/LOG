@@ -1,6 +1,0 @@
-2019/01/28-14:40:49.915 334 Reusing MANIFEST /home/shandian/.config/google-chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
-2019/01/28-14:40:49.915 334 Recovering log #7
-2019/01/28-14:40:49.926 334 Reusing old log /home/shandian/.config/google-chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000007.log 
-2019/01/28-23:27:47.685 4d2 Level-0 table #11: started
-2019/01/28-23:27:47.708 4d2 Level-0 table #11: 1024713 bytes OK
-2019/01/28-23:27:47.711 4d2 Delete type=0 #7

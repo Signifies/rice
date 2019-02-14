@@ -1,1 +1,0 @@
-Okta.Config={enabledLogging:false,allowOktaHttp:true,useLocalJS:true,verifyContentScript:true,buildType:"prodBuild",startrecordingLogs:false};

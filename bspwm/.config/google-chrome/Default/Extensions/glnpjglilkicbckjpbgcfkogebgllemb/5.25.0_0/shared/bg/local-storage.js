@@ -1,1 +1,0 @@
-Okta.localStorage={get:function(t){return localStorage.getItem(t)},set:function(t,e){localStorage.setItem(t,e);return e},clear:function(){localStorage.clear();return true}};

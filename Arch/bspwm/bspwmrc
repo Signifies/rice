@@ -4,7 +4,7 @@ sxhkd &
 deepin-terminal &
 google-chrome-stable &
 
-#bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI VII VIII IX X
 
 # Polybar
 # $HOME/.config/polybar/launch.sh
@@ -19,9 +19,6 @@ google-chrome-stable &
 
 #bspc monitor HDMI-0 -d 1 2 3 4 5
 #bspc monitor HDMI-1 -d 6 7 8 9 0
-
-# Updated workspace setup.
-bspc monitor HDMI-1 -d A B C D E F 
 
 #
 bspc config border_width         2
@@ -40,4 +37,4 @@ bspc rule -a Screenkey manage=off
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
 feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 
-panel & 
+panel &

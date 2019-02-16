@@ -3,8 +3,13 @@
 sxhkd &
 deepin-terminal &
 google-chrome-stable &
-
-bspc monitor -d I II III IV V VI VII VIII IX X
+#
+# Monitor configuration set.
+xrandr --output HDMI1 --auto --primary
+xrandr --output HDMI0 - auto --left-of HDMI1
+# Workspaces defined.
+bspc monitor HDMI-1 -d primary code reading IX X
+bspc monitor HDMI-0 -d I II III IV V
 
 # Polybar
 # $HOME/.config/polybar/launch.sh
@@ -28,10 +33,12 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a google-chrome-stable desktop='^B'
-bspc rule -a htop desktop=^1 state=floating
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a google-chrome-stable desktop=^2
+#bspc rule -a htop desktop=^1 state=floating
+bspc rule -a Atom desktop=^7
 bspc rule -a deepin-terminal desktop=^2 state=floating
+bspc rule -a google-chrome-stable desktop=^7
 bspc rule -a Screenkey manage=off
 
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png

@@ -14,7 +14,8 @@ echo "Copied BSPWM..."
 cp -r ~/.config/sxhkd/ $HOME/rice/Arch/
 echo "Copied sxhkd..."
 # Lemon Bar
-cp -r ~/.config/bar $HOME/rice/Arch/
+cp -r ~/.config/panel $HOME/rice/Arch/
+echo "Lemonbar Copied"
 # Compton
 cp -r ~/.config/compton/ $HOME/rice/Arch
 echo "Copied Compton..."

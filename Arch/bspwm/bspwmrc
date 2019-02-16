@@ -3,7 +3,6 @@
 sxhkd &
 deepin-terminal &
 google-chrome-stable &
-dde-file-manager &
 
 #bspc monitor -d I II III IV V VI VII VIII IX X
 
@@ -11,26 +10,34 @@ dde-file-manager &
 # $HOME/.config/polybar/launch.sh
 # Disabled for now until a simpler configuration can be made.
 
+# Works fantastic, but there is a slight glitch with lemonbar.
+# For now, I'm going to disable this and personally specifiy a monitor.
 #My monitor setup.
-for monitor in $(bspc query -M); do
-	bspc monitor $monitor -d A B C D E F
-done
+#for monitor in $(bspc query -M); do
+#	bspc monitor $monitor -d A B C D E F
+#done
 
 #bspc monitor HDMI-0 -d 1 2 3 4 5
 #bspc monitor HDMI-1 -d 6 7 8 9 0
 
+# Updated workspace setup.
+bspc monitor HDMI-1 -d A B C D E F 
+
+#
 bspc config border_width         2
-bspc config window_gap          12
+bspc config window_gap          15
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a google-chrome-stable desktop='^1'
+bspc rule -a google-chrome-stable desktop='^B'
 bspc rule -a htop desktop=^1 state=floating
-bspc rule -a deepin-terminal desktop=^1 state=floating
+bspc rule -a deepin-terminal desktop=^2 state=floating
 bspc rule -a Screenkey manage=off
 
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
-feh --bg-scale $HOME/shandian/Pictures/wallpapers/wallpapers-updated/w4FnFLL.jpg
+feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
+
+panel & 

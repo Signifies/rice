@@ -17,7 +17,11 @@ alt + @space
 # Take a screenshot:
 control + Print
 	scrot -e 'mv $f ~/Pictures/screenshots'
-
+#
+# Take a screenshot by selection
+alt + shift + s
+	scrot -s 'mv $f ~/Pictures/screenshots'
+	
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

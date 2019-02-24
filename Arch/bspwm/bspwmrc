@@ -48,6 +48,7 @@ bspc rule -a Screenkey manage=off
 
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
 # Terminal images: feh <image file> -B "<terminal bg color>" --scale-down
+# feh --bg-scale Pictures/wallhaven-731676.jpg 
 feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 
 panel &

@@ -15,9 +15,16 @@ cp -r ~/.config/sxhkd/ $HOME/rice/Arch/
 echo "Copied sxhkd..."
 # Lemon Bar
 cp -r ~/.config/panel $HOME/rice/Arch/
-echo "Lemonbar Copied"
+echo "Copied Bar..."
 # Compton
-cp -r ~/.config/compton/ $HOME/rice/Arch
+cp -r ~/.config/compton/ $HOME/rice/Arch/
 echo "Copied Compton..."
 # Xresources
 cp ~/.Xresources $HOME/rice/Arch/Xresources
+echo "Copied Xresources..."
+# Vimrc
+cp ~/.vimrc $HOME/rice/Arch/
+echo "Copied .vimrc..."
+# Vim files
+cp -r ~/.vim/ $HOME/rice/Arch/vim
+echo "Copied Vim files..."

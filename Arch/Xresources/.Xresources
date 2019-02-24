@@ -1,0 +1,11 @@
+! rxvt terminal configuration
+URxvt*scrollBar: false
+URxvt*selectToClipboard:  true
+URxvt.font: xft:monaco:size=11:antialias=true
+URxvt*cursorBlink: true
+URxvt*saveLines: 5000
+! URxvt*termName: rxvt-unicode
+URxvt.urlLauncher: chrome
+
+*background: #31363b
+*foreground: #eff0f1

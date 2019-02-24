@@ -2,7 +2,7 @@
 
 sxhkd &
 # Applications
-deepin-terminal &
+urxvt &
 google-chrome-stable &
 atom &
 dde-file-manager &
@@ -11,7 +11,7 @@ dde-file-manager &
 xrandr --output HDMI1 --auto --primary
 xrandr --output HDMI0 - auto --left-of HDMI1
 # Workspaces defined.
-bspc monitor HDMI-1 -d primary code reading school X
+bspc monitor HDMI-1 -d primary code-I code-II reading school
 bspc monitor HDMI-0 -d I II III IV V
 
 # Polybars
@@ -38,7 +38,7 @@ bspc config gapless_monocle      true
 # Workspace 2
 bspc rule -a dde-file-manager desktop=^2
 #
-bspc rule -a deepin-terminal desktop=^2 state=tiled
+bspc rule -a urxvt desktop=^2 state=tiled
 # Workspace 6
 bspc rule -a Google-chrome desktop=^6
 # Workspace 7

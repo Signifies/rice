@@ -25,4 +25,10 @@
 - [Tutorials Polybar](https://www.reddit.com/r/unixporn/comments/74z2z6/easily_getting_started_with_bspwm_and_polybar/)
 - [Tutorial's Polybar Config pastebin](https://pastebin.com/2AgTkhVx)
 
-### Check out Addy's notification system. 
+### Check out Addy's notification system.
+
+### Current list of items 02/17/19
+- [ ] [color-scheme](https://github.com/seebye/chameleon)
+- [ ] borderless windows? [reference](https://i.redd.it/jipz7i1n57o11.png)
+- [ ] Fix polybar configuration
+- [ ] Cava

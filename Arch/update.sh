@@ -19,3 +19,5 @@ echo "Lemonbar Copied"
 # Compton
 cp -r ~/.config/compton/ $HOME/rice/Arch
 echo "Copied Compton..."
+# Xresources
+cp ~/.Xresources $HOME/rice/Arch/Xresources

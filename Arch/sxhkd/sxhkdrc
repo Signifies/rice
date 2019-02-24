@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	deepin-terminal
+	urxvt
 
 # program launcher using rofi.
 super + @space
@@ -21,7 +21,7 @@ control + Print
 # Take a screenshot by selection
 alt + shift + s
 	scrot -s 'mv $f ~/Pictures/screenshots'
-	
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

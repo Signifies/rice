@@ -28,3 +28,6 @@ echo "Copied .vimrc..."
 # Vim files
 cp -r ~/.vim/ $HOME/rice/Arch/vim
 echo "Copied Vim files..."
+# Scripts
+cp -r ~/.config/scripts/ $HOME/rice/Arch/
+echo "Copied script files..."

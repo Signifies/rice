@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/etc/X11/xorg.conf.d'
 let g:netrw_dirhist_2='/usr/share/xsessions'
 let g:netrw_dirhist_3='/usr/share/X11/xorg.conf.d'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/home/shandian/.config/sxhkd'
 let g:netrw_dirhist_5='/etc/X11/xinit'
 let g:netrw_dirhist_6='/home/shandian/.vim'
 let g:netrw_dirhist_7='/home/shandian/.config/bspwm'
+let g:netrw_dirhist_8='/home/shandian/.config/sxhkd'

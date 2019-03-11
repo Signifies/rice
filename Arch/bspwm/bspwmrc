@@ -52,3 +52,4 @@ bspc rule -a Screenkey manage=off
 #feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 feh --bg-scale Pictures/term/termpic.jpg
 panel &
+compton &

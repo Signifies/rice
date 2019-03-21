@@ -3,9 +3,10 @@
 sxhkd &
 # Applications
 urxvt &
-google-chrome-stable &
+#google-chrome-stable & 
+Firefox &
 atom &
-Thunar &
+org.gnome.Nautilus &
 redshift & 
 #
 # Monitor configuration set.
@@ -37,11 +38,11 @@ bspc config gapless_monocle      true
 # Workspace 1
 #
 # Workspace 2
-bspc rule -a thunar desktop=^2
+bspc rule -a org.gnome.Nautilus desktop=^2
 #
 bspc rule -a urxvt desktop=^2 state=tiled
 # Workspace 6
-bspc rule -a Google-chrome desktop=^6
+bspc rule -a Firefox desktop=^6
 # Workspace 7
 bspc rule -a Atom desktop=^7
 

@@ -35,8 +35,9 @@ control + 2
 # bspwm
 control + 3
 	feh --bg-scale ~/rice/Arch/wallpapers/bspwm
-#
-
+# Delta wallpaper theme. Dark theme.
+control + 4
+	feh --bg-scale ~/rice/Arch/wallpapers/GpkmoP2.png
 
 #
 # bspwm hotkeys

@@ -8,7 +8,9 @@ Firefox &
 atom &
 Nautilus &
 redshift & 
-#
+spotify &
+# 
+
 # Monitor configuration set.
 #xrandr --output HDMI1 --auto --primary
 #xrandr --output HDMI0 - auto --left-of HDMI1
@@ -40,6 +42,7 @@ bspc config gapless_monocle      true
 # Workspace 2
 bspc rule -a Nautilus desktop=^2
 #
+bspc rule -a spotify desktop=^2 state=floating
 bspc rule -a urxvt desktop=^2 state=tiled
 # Workspace 6
 bspc rule -a Firefox desktop=^6

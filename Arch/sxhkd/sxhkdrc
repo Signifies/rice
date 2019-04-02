@@ -9,11 +9,13 @@ super + Return
 # program launcher using rofi.
 super + @space
 	rofi -show drun
-
+#
 # Rofi window menu
 alt + @space
   rofi -show window
-
+# Clock
+alt + c
+	sh $HOME/clock.sh	
 # Take a screenshot:
 control + Print
 	scrot -e 'mv $f ~/Pictures/screenshots'

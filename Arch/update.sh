@@ -10,6 +10,9 @@
 # BSPWM
 cp -r ~/.config/bspwm/ $HOME/rice/Arch/
 echo "Copied BSPWM..."
+# Clock
+cp $HOME/clock.sh $HOME/rice/Arch/scripts
+echo "Copied the clock function"
 # sxhkd
 cp -r ~/.config/sxhkd/ $HOME/rice/Arch/
 echo "Copied sxhkd..."

@@ -9,18 +9,15 @@ atom &
 Nautilus &
 redshift & 
 spotify &
+xscreensaver &
 # 
 
 # Monitor configuration set.
 #xrandr --output HDMI1 --auto --primary
 #xrandr --output HDMI0 - auto --left-of HDMI1
 # Workspaces defined.
-bspc monitor HDMI-1 -d primary code code-II reading school 
+bspc monitor HDMI-1 -d Internet code code-II reading school 
 bspc monitor HDMI-0 -d I II III IV V
-
-# Polybars
-# $HOME/.config/polybar/launch.sh
-# Disabled for now until a simpler configuration can be made.
 
 # Works fantastic, but there is a slight glitch with lemonbar.
 # For now, I'm going to disable this and personally specifiy a monitor.
@@ -54,6 +51,6 @@ bspc rule -a Screenkey manage=off
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
 # Terminal images: feh <image file> -B "<terminal bg color>" --scale-down
 #feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
-feh --bg-scale Pictures/term/termpic.jpg
+feh --bg-scale ~/rice/Arch/wallpapers/naturegirl.jpg
 panel &
 compton &

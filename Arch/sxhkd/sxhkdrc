@@ -37,11 +37,14 @@ control + 2
 # bspwm
 control + 3
 	feh --bg-scale ~/rice/Arch/wallpapers/bspwm
-# Delta wallpaper theme. Dark theme.
 control + 4
-	feh --bg-scale ~/rice/Arch/wallpapers/GpkmoP2.png
-# Firefox installs Linux???      And eats your pasta.
+	feh --bg-scale ~/rice/Arch/wallpapers/greyscale.jpg
 control + 5
+	feh --bg-scale ~/rice/Arch/wallpapers/sattelitedish.png
+control + 6
+	feh --bg-scale ~/rice/Arch/wallpapers/naturegirl.jpg
+# Firefox installs Linux???      And eats your pasta.
+control + 7
 	feh --bg-center ~/rice/Arch/wallpapers/7cnxmrtblls21.jpg
 #
 # bspwm hotkeys

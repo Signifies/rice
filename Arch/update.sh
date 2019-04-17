@@ -34,3 +34,6 @@ echo "Copied Vim files..."
 # Scripts
 cp -r ~/.config/scripts/ $HOME/rice/Arch/
 echo "Copied script files..."
+# Work.
+cp $HOME/work.sh $HOME/rice/Arch/scripts
+echo "Copied work script..."

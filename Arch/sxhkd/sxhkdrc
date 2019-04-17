@@ -40,7 +40,9 @@ control + 3
 # Delta wallpaper theme. Dark theme.
 control + 4
 	feh --bg-scale ~/rice/Arch/wallpapers/GpkmoP2.png
-
+# Firefox installs Linux???      And eats your pasta.
+control + 5
+	feh --bg-center ~/rice/Arch/wallpapers/7cnxmrtblls21.jpg
 #
 # bspwm hotkeys
 #

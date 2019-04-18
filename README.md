@@ -2,8 +2,7 @@
 Repo of all my rice configurations, sorted by operating system.
 
 ### TODO
-- [ ] Fix terminal Image (neofetch)
 - [x] VIM color scheme.
 - [ ] Terminal Colorbar (neofetch)
-- [ ] Find color picker program
+- [x] Find color picker program
 - [ ] Add neofetch weather and time.

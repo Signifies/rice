@@ -56,18 +56,68 @@ panel_title() {
 }
 
 panel_hostname() {
-	echo "%{A:$XDG_CONFIG_HOME/panel/popup_power &:}%{B#ff93a1a1}%{F#fff3f3f3} $(hostname) %{F-}%{B-}%{A}"
+	echo " %{A:$XDG_CONFIG_HOME/panel/popup_power &:}%{B#ff93a1a1}%{F#fff3f3f3} $(hostname) %{F-}%{B-}%{A} "
 }
 
 panel_clock() {
-	echo "%{A:$XDG_CONFIG_HOME/panel/popup_cal &:}%{B#ff657b83}%{F#fff3f3f3} $(date +'%a %-I:%M %p') %{A}%{F-}%{B-}"
+	echo " %{A:$XDG_CONFIG_HOME/panel/popup_cal &:}%{B#ff657b83}%{F#fff3f3f3} $(date +'%H:%M:%S - %D') %{A}%{F-}%{B-} "
 }
 
+# check and output the network connection state
+network() {
+	# The following assumes you have 3 interfaces: loopback, ethernet, wifi
+	read lo int1 int2 <<< `ip link | sed -n 's/^[0-9]: \(.*\):.*$/\1/p'`
+	# iwconfig returns an error code if the interface tested has no wireless
+	# extensions
+	if iwconfig $int1 >/dev/null 2>&1; then
+	    wifi=$int1
+	    eth0=$int2
+	else
+	    wifi=$int2
+	    eth0=$int1
+	fi
+	# in case you have only one interface, just set it here:
+	# int=eth0
+	# this line will set the variable $int to $eth0 if it's up, and $wifi
+	# otherwise. I assume that if ethernet is UP, then it has priority over
+	# wifi. If you have a better idea, please share :)
+	ip link show $eth0 | grep 'state UP' >/dev/null && int=$eth0 || int=$wifi
+	# just output the interface name. Could obviously be done in the 'ping'
+	# query
+	echo -n "$int"
+	# Send a single packet, to speed up the test. I use google's DNS 8.8.8.8,
+	# but feel free to use any ip address you want. Be sure to put an IP, not a
+	# domain name. You'll bypass the DNS resolution that can take some precious
+	# miliseconds ;)
+	# synj - added -s1 to save data on metered connections
+	ping -c1 -s1 8.8.8.8 >/dev/null 2>&1 && echo "connected" || echo "%{F#FF0000}disconnected"
+}
+
+_netw() {
+  int="enp0s31f6" # set your wifi interface
+  downr=`cat /sys/class/net/$int/statistics/rx_bytes`
+  upt=`cat /sys/class/net/$int/statistics/tx_bytes`
+
+   sleep 0.1
+
+  downn=`cat /sys/class/net/$int/statistics/rx_bytes`
+  upn=`cat /sys/class/net/$int/statistics/tx_bytes`
+  countr=`expr $downn - $downr`
+  countt=`expr $upn - $upt`
+  up=`expr $countt / 1024`
+  down=`expr $countr / 1024`
+
+  # rx = downspeed
+  # tx = upspeed
+   echo " %{B#ff657b83} %{F#fff3f3f3}net: %{F#32CD32}$(network) %{F-}|%{F#fff3f3f3} up %{F#CC939B}$up%{F-} kBps | %{F#fff3f3f3}down $down%{F-} kBps %{F-}%{B-}%{A} "
+  }
 # print to panel
+
+# Check test.sh for other potential features too.
 
 while [ "$(pidof bspwm)" != "" ]; do
 	echo "%{l}$(panel_workspaces)" \
 			 "%{c}$(panel_title)" \
-			 "%{Sl}%{r}$(panel_sound)$(panel_hostname)$(panel_clock)"
+			 "%{Sl}%{r}$(panel_hostname)$(panel_clock)$(_netw)"
 	sleep 0.1s
 done

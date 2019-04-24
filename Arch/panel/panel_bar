@@ -56,11 +56,11 @@ panel_title() {
 }
 
 panel_hostname() {
-	echo " %{A:$XDG_CONFIG_HOME/panel/popup_power &:}%{B#ff93a1a1}%{F#fff3f3f3} $(hostname) %{F-}%{B-}%{A} "
+	echo " %{A:$XDG_CONFIG_HOME/panel/popup_power &:}%{F#fff3f3f3} $(hostname) %{F-}%{B-}%{A} "
 }
 
 panel_clock() {
-	echo " %{A:$XDG_CONFIG_HOME/panel/popup_cal &:}%{B#ff657b83}%{F#fff3f3f3} $(date +'%H:%M:%S - %D') %{A}%{F-}%{B-} "
+	echo " %{A:$XDG_CONFIG_HOME/panel/popup_cal &:}%{F#fff3f3f3} $(date +'%H:%M:%S - %D') %{A}%{F-}%{B-} "
 }
 
 # check and output the network connection state
@@ -90,7 +90,7 @@ network() {
 	# domain name. You'll bypass the DNS resolution that can take some precious
 	# miliseconds ;)
 	# synj - added -s1 to save data on metered connections
-	ping -c1 -s1 8.8.8.8 >/dev/null 2>&1 && echo "connected" || echo "%{F#FF0000}disconnected"
+	ping -c1 -s1 8.8.8.8 >/dev/null 2>&1 && echo "connected" || echo "%{F#FF0000}REEEEEEEEEEEE" #lol put REEEEEEE here when there's no internet.
 }
 
 _netw() {
@@ -109,7 +109,7 @@ _netw() {
 
   # rx = downspeed
   # tx = upspeed
-   echo " %{B#ff657b83} %{F#fff3f3f3}net: %{F#32CD32}$(network) %{F-}|%{F#fff3f3f3} up %{F#CC939B}$up%{F-} kBps | %{F#fff3f3f3}down $down%{F-} kBps %{F-}%{B-}%{A} "
+   echo " %{F#fff3f3f3}net: %{F#32CD32}$(network) %{F-}|%{F#fff3f3f3} up %{F#CC939B}$up%{F-} kBps | %{F#fff3f3f3}down $down%{F-} kBps %{F-}%{B-}%{A} "
   }
 # print to panel
 

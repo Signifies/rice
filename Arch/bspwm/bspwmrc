@@ -3,20 +3,20 @@
 sxhkd &
 # Applications
 urxvt &
-#google-chrome-stable &
+#google-chrome-stable & 
 Firefox &
 atom &
 Nautilus &
-redshift &
+redshift & 
 spotify &
 xscreensaver &
-#
+# 
 
 # Monitor configuration set.
 #xrandr --output HDMI1 --auto --primary
 #xrandr --output HDMI0 - auto --left-of HDMI1
 # Workspaces defined.
-bspc monitor HDMI-1 -d Internet code code-II reading school
+bspc monitor HDMI-1 -d Internet code code-II reading school 
 bspc monitor HDMI-0 -d I II III IV V
 
 # Works fantastic, but there is a slight glitch with lemonbar.
@@ -53,6 +53,6 @@ bspc rule -a Screenkey manage=off
 # Terminal images: feh <image file> -B "<terminal bg color>" --scale-down
 #feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 #feh --bg-scale ~/rice/Arch/wallpapers/naturegirl.jpg
-
+feh --bg-scale ~/rice/Arch/wallpapers/archd.jpg
 panel &
 compton &

@@ -36,7 +36,7 @@ control + 2
 	feh --bg-scale ~/rice/Arch/wallpapers/blonde-theme.jpg
 # bspwm
 control + 3
-	feh --bg-scale ~/rice/Arch/wallpapers/bspwm
+	feh --bg-scale ~/Documents/earth.png
 control + 4
 	feh --bg-scale ~/rice/Arch/wallpapers/greyscale.jpg
 control + 5
@@ -46,6 +46,9 @@ control + 6
 # Firefox installs Linux???      And eats your pasta.
 control + 7
 	feh --bg-scale ~/rice/Arch/wallpapers/archd.jpg
+# Shell
+control + 8
+	feh --bg-scale ~/rice/Arch/wallpapers/shell.jpg
 #
 # bspwm hotkeys
 #

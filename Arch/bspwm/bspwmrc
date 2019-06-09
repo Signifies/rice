@@ -53,6 +53,7 @@ bspc rule -a Screenkey manage=off
 # Terminal images: feh <image file> -B "<terminal bg color>" --scale-down
 #feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 #feh --bg-scale ~/rice/Arch/wallpapers/naturegirl.jpg
-feh --bg-scale ~/rice/Arch/wallpapers/archd.jpg
+#feh --bg-scale ~/rice/Arch/wallpapers/archd.jpg
+feh --bg-scale ~/Documents/hot.jpg
 panel &
 compton &

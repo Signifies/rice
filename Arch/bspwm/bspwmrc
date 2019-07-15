@@ -16,7 +16,8 @@ xscreensaver &
 #xrandr --output HDMI1 --auto --primary
 #xrandr --output HDMI0 - auto --left-of HDMI1
 # Workspaces defined.
-bspc monitor HDMI-1 -d Internet code code-II reading school 
+#bspc monitor HDMI-1 -d browsing code code-II reading gaming 
+bspc monitor HDMI-1 -d VI VII VIII IX X
 bspc monitor HDMI-0 -d I II III IV V
 
 # Works fantastic, but there is a slight glitch with lemonbar.
@@ -29,17 +30,25 @@ bspc monitor HDMI-0 -d I II III IV V
 #
 bspc config border_width         2
 bspc config window_gap           25
+bspc config top_padding          28
+bspc config right_padding        0
+bspc config left_padding         0
+bspc config bottom_padding       0 
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
+bspc config split_ratio          0.5
+bspc config borderless_monocle   false
 bspc config gapless_monocle      true
+bspc config paddingless_monocle  true
+
+bspc config focus_follows_pointer true
+
 
 # Workspace 1
 #
 # Workspace 2
-bspc rule -a Nautilus desktop=^2
+bspc rule -a org.gnome.Nautilus desktop=^2 state=floating
 #
-bspc rule -a spotify desktop=^3 state=tiled
+bspc rule -a spotify desktop=^3 state=tiled 
 bspc rule -a urxvt desktop=^1 state=tiled
 # Workspace 6
 # Commenting this one out, bc it's not working.
@@ -51,9 +60,10 @@ bspc rule -a Screenkey manage=off
 
 # Wallpaper using feh currently. #Daisy Ridley FTW. wallhaven-356407.png
 # Terminal images: feh <image file> -B "<terminal bg color>" --scale-down
+feh --bg-scale Pictures/z9Mm.jpg
 #feh --bg-scale Pictures/wallpapers/wallpapers-updated/W/FZcN3zf.jpg
 #feh --bg-scale ~/rice/Arch/wallpapers/naturegirl.jpg
 #feh --bg-scale ~/rice/Arch/wallpapers/archd.jpg
-feh --bg-scale ~/Documents/hot.jpg
+#feh --bg-center ~/Documents/hot.jpg
 panel &
 compton &

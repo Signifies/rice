@@ -37,3 +37,7 @@ echo "Copied script files..."
 # Work.
 cp $HOME/work.sh $HOME/rice/Arch/scripts
 echo "Copied work script..."
+cp $HOME/record.sh $HOME/rice/Arch/scripts/
+echo "Copied recording script..."
+cp $HOME/weather.sh $HOME/rice/Arch/scripts/
+echo "Copied weather script..."

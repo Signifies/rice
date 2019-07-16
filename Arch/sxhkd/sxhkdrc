@@ -19,6 +19,8 @@ alt + c
 # Take a screenshot:
 control + Print
 	scrot -e 'mv $f ~/Pictures/screenshots'
+control + shift + l
+	betterlockscreen -l pixel -t "Locked"
 #
 # Take a screenshot by selection
 alt + shift + s

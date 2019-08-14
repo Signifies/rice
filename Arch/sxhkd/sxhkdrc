@@ -40,7 +40,7 @@ control + 2
 control + 3
 	feh --bg-scale ~/Documents/earth.png
 control + 4
-	feh --bg-scale ~/rice/Arch/wallpapers/greyscale.jpg
+	feh --bg-scale ~/rice/Arch/wallpapers/z9Mm.jpg
 control + 5
 	feh --bg-scale ~/rice/Arch/wallpapers/sattelitedish.png
 control + 6

@@ -55,10 +55,6 @@ panel_title() {
 	echo "${title}$(xtitle)${S0}"
 }
 
-panel_hostname() {
-	echo " %{A:$XDG_CONFIG_HOME/panel/popup_power &:}%{F#fff3f3f3} $(hostname) %{F-}%{B-}%{A} "
-}
-
 panel_clock() {
 	echo " %{A:$XDG_CONFIG_HOME/panel/popup_cal &:}%{F#fff3f3f3} $(date +'%H:%M:%S - %D') %{A}%{F-}%{B-} "
 }
@@ -118,6 +114,6 @@ _netw() {
 while [ "$(pidof bspwm)" != "" ]; do
 	echo "%{l}$(panel_workspaces)" \
 			 "%{c}$(panel_title)" \
-			 "%{Sl}%{r}$(panel_hostname)$(panel_clock)$(_netw)"
+			 "%{Sl}%{r}$(panel_clock)$(_netw)"
 	sleep 0.1s
 done

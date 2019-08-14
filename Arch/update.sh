@@ -41,3 +41,7 @@ cp $HOME/record.sh $HOME/rice/Arch/scripts/
 echo "Copied recording script..."
 cp $HOME/weather.sh $HOME/rice/Arch/scripts/
 echo "Copied weather script..."
+cp $HOME/pubsub.sh $HOME/rice/Arch/scripts/
+echo "Copied pubsub script..."
+
+

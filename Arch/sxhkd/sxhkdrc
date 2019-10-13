@@ -5,7 +5,9 @@
 # terminal emulator
 super + Return
 	urxvt
-
+# Firefox 
+super + shift + F
+	firefox
 # program launcher using rofi.
 super + @space
 	rofi -show drun
@@ -13,6 +15,8 @@ super + @space
 # Rofi window menu
 alt + @space
   rofi -show window
+home 
+	super + 7 
 # Clock
 alt + c
 	sh $HOME/clock.sh	
